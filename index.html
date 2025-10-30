@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BetterBite | Profile Quiz</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="app-name">BetterBite</div>
+    <div class="header-buttons">
+      <button class="settings-btn">Settings</button>
+      <button class="account-btn">Account</button>
+    </div>
+    
+  </header>
+    <main>
+      <div class="progress-bar">
+        <progress id="quiz-progress" value="0" max="100"></progress>
+      </div>
+      <section id="quiz-container">
+        <div id="question-card">
+            <span class="tag">Diet</span>
+            <h1 id="question">
+              Sample Question
+            </h1>
+        </div>
+        <div id="answers" class="answer-options"></div>
+        <div class="q-buttons">
+          <button id="previous-button">Previous</button>
+          <button id="skip-buton">Skip</button>
+          <button id="next-button">Next</button>
+        </div>
+      </section>
+    </main>
+
+<script src="js/quiz.js"></script>
+
+</body>
+</html>
