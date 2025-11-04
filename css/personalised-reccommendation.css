@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FEFAE0;
+    font-family: 'Inter', sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 55px;
+    background-color: #FEFAE0;
+}
+
+.app-name {
+    color: #4F7B58;
+    font-size: 32px;
+    font-weight: 900;
+    margin: 0;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.header-buttons button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.settings-btn, .account-btn {
+    font-size: 30px;
+    color: #333;
+}
+
+main {
+    padding: 0 55px 40px 55px;
+}
+
+.page-title {
+    color: black;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.page-subtitle {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.recipes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.recipe-button {
+    background-color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #4F7B58;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.recipe-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: #f8f9fa;
+}
+
+.recipe-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.recipe-name {
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.nutrients-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.nutrient {
+    background-color: #E3DAF6;
+    color: #333;
+    padding: 4px 10px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.nav-button {
+    background-color: #C8ACFF;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 40px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    min-width: 120px;
+}
+
+.nav-button:hover {
+    background-color: #B899F5;
+}
+
+@media (max-width: 768px) {
+    header, main {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .nav-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-button {
+        width: 100%;
+    }
+    
+    .nutrients-row {
+        gap: 6px;
+    }
+    
+    .nutrient {
+        font-size: 12px;
+        padding: 3px 8px;
+    }
+}
