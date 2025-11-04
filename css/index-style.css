@@ -10,6 +10,16 @@ header{
 }
 
 /* BetterBite name title */
+.title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.title img {
+    width: 35px;
+    height: 100%;
+    border-radius: 10px;
+}
 .app-name{
     text-align: left;
     color: #4F7B58;
