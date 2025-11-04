@@ -1,0 +1,195 @@
+
+body{
+    background-color: #FEFAE0;
+    font-family: 'Inter', sans-serif;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* BetterBite name title */
+.app-name{
+    text-align: left;
+    color: #4F7B58;
+    font-size: 32px;
+    font-weight: 900;
+}
+
+/* Weekly Food Tracker */
+.tracker-title{
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 30px;
+    color: black;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Clear All Entries */
+.clear-button{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+    margin-bottom: 40px 55px 40px 55px;
+}
+
+.clear-button button{
+    background-color: #C8ACFF;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 40px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    width: 250px;
+}
+
+#clear-food-button{
+    margin-right: 55px;
+    text-align: center;
+}
+
+
+/* account & settings button */
+.header-buttons button{
+    border: none;
+    background: none;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.settings-btn, .account-btn{
+    font-size: 30px;
+    transition: color 0.2s;
+    padding: 5px;
+}
+
+.header-buttons{
+    display: flex;
+    gap: 15px;
+}
+
+/* back and next buttons */
+.q-buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 30px auto;
+}
+
+.q-buttons button{
+    background-color: #C8ACFF;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 40px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    width: 250px;
+}
+
+
+#back-button{
+    margin-left: 55px;
+    text-align: center;
+}
+
+#next-button{
+    margin-right: 55px;
+    text-align: center;
+}
+
+.tracker-container {
+    background-color: #E2ECC0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 20px auto;
+    padding: 30px;
+    min-height: 350px;
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Grid layout for dropdowns */
+.dropdowns-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 50px;
+    row-gap: 25px;
+    width: 100%;
+}
+
+.dropdown.left{
+    grid-column: 1;
+    justify-self: start;
+    width: 90%;
+}
+
+.dropdown.right{
+    grid-column: 2;
+    justify-self: end;
+    width: 90%;
+}
+
+.dropdown.full{
+    grid-column: 1 / -1;
+    text-align: center;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dropdown.full select {
+    width: 100%;
+}
+
+.label{
+    font-size: 20px;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.dropdown select{
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    font-size: 16px;
+}
+
+/* Labels */
+.label {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+/* Add Food Entry Button */
+.food-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.food-button button {
+    background-color: #4F7B58;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 12px 40px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+}

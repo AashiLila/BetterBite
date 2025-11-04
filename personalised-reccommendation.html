@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BetterBite | Personalized Recommendations</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="css/recommendations-style.css" />
+</head>
+<body>
+    <header>
+        <div class="app-name">BetterBite</div>
+        
+        <div class="header-buttons">
+            <button>
+                <span class="material-symbols-outlined settings-btn">
+                    settings
+                </span>
+            </button>
+            <button>
+                <span class="material-symbols-outlined account-btn">
+                    account_circle
+                </span>
+            </button>
+        </div>
+    </header>
+    
+    <main>
+        <div class="page-title">Personalized Food Recommendations</div>
+        <p class="page-subtitle">Based on your dietary preferences and tracked foods</p>
+        
+        <div class="recipes-container">
+            <button class="recipe-button" onclick="window.location.href='recipe.html?recipe=grilled-salmon'">
+                <div class="recipe-content">
+                    <h3 class="recipe-name">Grilled Salmon with Mango Salsa</h3>
+                    <div class="nutrients-row">
+                        <span class="nutrient">Protein</span>
+                        <span class="nutrient">Vitamin C</span>
+                        <span class="nutrient">Vitamin D</span>
+                        <span class="nutrient">Fiber</span>
+                        <span class="nutrient">Iron</span>
+                    </div>
+                </div>
+            </button>
+            
+            <button class="recipe-button" onclick="window.location.href='recipe.html?recipe=mediterranean-pasta'">
+                <div class="recipe-content">
+                    <h3 class="recipe-name">Mediterranean Pasta Salad</h3>
+                    <div class="nutrients-row">
+                        <span class="nutrient">Protein</span>
+                        <span class="nutrient">Vitamin C</span>
+                        <span class="nutrient">Vitamin B12</span>
+                        <span class="nutrient">Carbs</span>
+                        <span class="nutrient">Vitamin E</span>
+                    </div>
+                </div>
+            </button>
+            
+            <button class="recipe-button" onclick="window.location.href='recipe.html?recipe=chickpea-bowl'">
+                <div class="recipe-content">
+                    <h3 class="recipe-name">High-Fiber Chickpea & Veggie Bowl</h3>
+                    <div class="nutrients-row">
+                        <span class="nutrient">Protein</span>
+                        <span class="nutrient">Carbs</span>
+                        <span class="nutrient">Fiber</span>
+                        <span class="nutrient">Sodium</span>
+                        <span class="nutrient">Iron</span>
+                    </div>
+                </div>
+            </button>
+            
+            <button class="recipe-button" onclick="window.location.href='recipe.html?recipe=citrus-quinoa'">
+                <div class="recipe-content">
+                    <h3 class="recipe-name">Citrus Quinoa Power Salad</h3>
+                    <div class="nutrients-row">
+                        <span class="nutrient">Protein</span>
+                        <span class="nutrient">Vitamin C</span>
+                        <span class="nutrient">Iron</span>
+                        <span class="nutrient">Fiber</span>
+                        <span class="nutrient">Carbs</span>
+                    </div>
+                </div>
+            </button>
+        </div>
+        
+        <div class="nav-buttons">
+            <button class="nav-button" onclick="window.location.href='nutritionAnalysis.html'">Back</button>
+            <button class="nav-button" onclick="window.location.href='recipe.html'">Next</button>
+        </div>
+    </main>
+</body>
+</html>
