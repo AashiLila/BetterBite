@@ -36,7 +36,7 @@ header {
 
 /* Recipe information container */
 .recipe-container {
-    width: 900px;
+    width: 700px;
     background-color: #E2ECC0;
     border-radius: 10px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
@@ -59,8 +59,12 @@ header {
     align-items: center;
     margin: 50px;
 }
-#step {
+.step-label {
     font-weight: bold;
+}
+
+hr {
+  border: 1px solid gray;
 }
 
 /* Navigation buttons */
