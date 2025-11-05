@@ -10,12 +10,54 @@
   padding-top: 20px; 
 }
 
+.title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.title img {
+    width: 35px;
+    height: 100%;
+    border-radius: 10px;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app-name{
+    text-align: left;
+    color: #4F7B58;
+    font-size: 32px;
+    font-weight: 900;
+}
 
 body {
   font-family: inter;
-  background-color: #faf7e8;
+  background-color: #FEFAE0;
   margin: 0;
   padding: 40px;
+}
+
+/* account & settings button */
+.header-buttons button{
+    border: none;
+    background: none;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.settings-btn, .account-btn{
+    font-size: 30px;
+    transition: color 0.2s;
+    padding: 5px;
+}
+
+.header-buttons{
+    display: flex;
+    gap: 15px;
 }
 
 .container {
@@ -127,20 +169,35 @@ h2 {
   
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 25px;
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 30px auto;
 }
 
-button {
-  background-color: #C8ACFF;
-  border: none;
-  padding: 12px 67px;
-  border-radius: 10px;
-  color: black;
-  font-weight: bold;
-  cursor: pointer;
+.buttons button{
+    background-color: #C8ACFF;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 40px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    width: 250px;
+}
+
+
+#back{
+    margin-left: 55px;
+    text-align: center;
+}
+
+#next{
+    margin-right: 55px;
+    text-align: center;
 }
 
 button:hover {
