@@ -4,95 +4,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BetterBite | Personalized Recommendations</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="css/personalised-reccommendation.css" />
+    <link rel="stylesheet" 
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
+
 <body>
     <header>
-        <div class="title">
-            <img src="assets/images/logo.png" alt="BetterBite logo"/>
-            <div class="app-name">BetterBite</div>
-        </div>
-        
+        <div class="app-name">BetterBite</div>
         <div class="header-buttons">
-            <button>
-                <span class="material-symbols-outlined settings-btn">
-                    settings
-                </span>
-            </button>
-            <button>
-                <span class="material-symbols-outlined account-btn">
-                    account_circle
-                </span>
-            </button>
+            <button><span class="material-symbols-outlined">settings</span></button>
+            <button><span class="material-symbols-outlined">account_circle</span></button>
         </div>
     </header>
-    
+
     <main>
-        <div class="page-title">Personalized Food Recommendations</div>
+        <div class="page-title">
+            <span class="material-symbols-outlined cart-icon">shopping_cart</span>
+            Personalized Food Recommendations
+        </div>
         <p class="page-subtitle">Based on your dietary preferences and tracked foods</p>
-        
-        <div class="recipes-container">
-            <button class="recipe-button" onclick="window.location.href='recipe.html?recipe=grilled-salmon'">
-                <div class="recipe-content">
-                    <h3 class="recipe-name">Grilled Salmon with Mango Salsa</h3>
-                    <div class="nutrients-row">
-                        <span class="nutrient">Protein</span>
-                        <span class="nutrient">Vitamin C</span>
-                        <span class="nutrient">Vitamin D</span>
-                        <span class="nutrient">Fiber</span>
-                        <span class="nutrient">Iron</span>
-                    </div>
-                </div>
+
+        <div class="recipe-section-box">
+
+            <button class="recipe-button">
+                <div class="recipe-name">Grilled Salmon with Mango Salsa</div>
+                <div class="nutrients">• Protein • Vitamin C • Vitamin D • Fiber • Iron</div>
             </button>
-            
-            <button class="recipe-button" onclick="window.location.href='recipe.html?recipe=mediterranean-pasta'">
-                <div class="recipe-content">
-                    <h3 class="recipe-name">Mediterranean Pasta Salad</h3>
-                    <div class="nutrients-row">
-                        <span class="nutrient">Protein</span>
-                        <span class="nutrient">Vitamin C</span>
-                        <span class="nutrient">Vitamin B12</span>
-                        <span class="nutrient">Carbs</span>
-                        <span class="nutrient">Vitamin E</span>
-                    </div>
-                </div>
+
+            <button class="recipe-button">
+                <div class="recipe-name">Mediterranean Pasta Salad</div>
+                <div class="nutrients">• Protein • Vitamin C • Vitamin B12 • Carbs • Vitamin E</div>
             </button>
-            
-            <button class="recipe-button" onclick="window.location.href='recipe.html?recipe=chickpea-bowl'">
-                <div class="recipe-content">
-                    <h3 class="recipe-name">High-Fiber Chickpea & Veggie Bowl</h3>
-                    <div class="nutrients-row">
-                        <span class="nutrient">Protein</span>
-                        <span class="nutrient">Carbs</span>
-                        <span class="nutrient">Fiber</span>
-                        <span class="nutrient">Sodium</span>
-                        <span class="nutrient">Iron</span>
-                    </div>
-                </div>
+
+            <button class="recipe-button green-bg">
+                <div class="recipe-name">High-Fiber Chickpea & Veggie Bowl</div>
+                <div class="nutrients">• Protein • Carbs • Fiber • Sodium • Iron</div>
             </button>
-            
-            <button class="recipe-button" onclick="window.location.href='recipe.html?recipe=citrus-quinoa'">
-                <div class="recipe-content">
-                    <h3 class="recipe-name">Citrus Quinoa Power Salad</h3>
-                    <div class="nutrients-row">
-                        <span class="nutrient">Protein</span>
-                        <span class="nutrient">Vitamin C</span>
-                        <span class="nutrient">Iron</span>
-                        <span class="nutrient">Fiber</span>
-                        <span class="nutrient">Carbs</span>
-                    </div>
-                </div>
+
+            <button class="recipe-button">
+                <div class="recipe-name">Citrus Quinoa Power Salad</div>
+                <div class="nutrients">• Protein • Vitamin C • Iron • Fiber • Carbs</div>
             </button>
         </div>
-        
+
         <div class="nav-buttons">
-            <button class="back-button" onclick="window.location.href='nutritionAnalysis.html'">Back</button>
-            <button class="next-button" onclick="window.location.href='recipe.html'">Next</button>
+            <button class="nav-button">Back</button>
+            <button class="nav-button">Next</button>
         </div>
     </main>
 </body>
