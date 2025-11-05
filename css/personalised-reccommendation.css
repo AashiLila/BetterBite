@@ -14,173 +14,97 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 55px;
-    background-color: #FEFAE0;
-}
-
-/* BetterBite name title */
-.title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.title img {
-    width: 35px;
-    height: 100%;
-    border-radius: 10px;
 }
 
 .app-name {
-    color: #4F7B58;
     font-size: 32px;
     font-weight: 900;
-    margin: 0;
-}
-
-.header-buttons {
-    display: flex;
-    gap: 15px;
+    color: #4F7B58;
 }
 
 .header-buttons button {
     border: none;
     background: none;
     cursor: pointer;
-    padding: 8px;
-}
-
-.settings-btn, .account-btn {
-    font-size: 30px;
-    color: #333;
+    font-size: 28px;
 }
 
 main {
-    padding: 0 55px 40px 55px;
+    padding: 0 55px;
 }
 
 .page-title {
+    font-size: 22px;
+    font-weight: 700;
     color: black;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cart-icon {
     font-size: 24px;
-    font-weight: 500;
-    margin-bottom: 8px;
 }
 
 .page-subtitle {
     color: #666;
-    font-size: 16px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
-.recipes-container {
+.recipe-section-box {
+    background-color: #9CAF9B;    
+    padding: 25px;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 18px;
 }
 
 .recipe-button {
     background-color: white;
-    border: none;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border-left: 4px solid #4F7B58;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    width: 100%;
+    border: 2px solid #4F7B58;
+    border-radius: 10px;
+    padding: 16px 20px;
     text-align: left;
-    margin-bottom: 15px;
+    cursor: pointer;
 }
 
 .recipe-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    background-color: #f8f9fa;
+    background-color: #f3f4f3;
 }
 
-.recipe-content {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.green-bg {
+    background-color: #DDE8CC;    
 }
 
 .recipe-name {
-    color: #333;
     font-size: 18px;
-    font-weight: 600;
-    margin: 0;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 8px;
 }
 
-.nutrients-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-items: center;
+.nutrients {
+    font-size: 15px;
+    color: black;
 }
 
-.nutrient {
-    background-color: #E3DAF6;
-    color: #333;
-    padding: 4px 10px;
-    border-radius: 16px;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.nav-buttons{
+.nav-buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 40px;
-    margin-bottom: 30px auto;
+    margin-top: 30px;
 }
 
-.nav-buttons button{
+.nav-button {
     background-color: #C8ACFF;
     border: none;
     border-radius: 8px;
     padding: 12px 40px;
     font-size: 16px;
     font-weight: 600;
-    color: #333;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
-    width: 250px;
-}
-
-
-#back-button{
-    margin-left: 55px;
-    text-align: center;
-}
-
-#next-button{
-    margin-right: 55px;
-    text-align: center;
 }
 
 .nav-button:hover {
     background-color: #B899F5;
-}
-
-@media (max-width: 768px) {
-    header, main {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-    
-    .nav-buttons {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .nav-button {
-        width: 100%;
-    }
-    
-    .nutrients-row {
-        gap: 6px;
-    }
-    
-    .nutrient {
-        font-size: 12px;
-        padding: 3px 8px;
-    }
 }
