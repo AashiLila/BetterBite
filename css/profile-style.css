@@ -1,0 +1,229 @@
+body {
+    background-color: #FEFAE0;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    color: #333333;
+}
+
+/* Header with title and settings + account buttons */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 60px;
+    background-color: #ffffff;
+    border-bottom: 1.5px solid #e6e2c7;
+    box-shadow: 0 2px 8px rgba(79, 123, 88, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* App name + logo */
+.title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.title img {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+}
+
+.app-name {
+    color: #4F7B58;
+    font-size: 30px;
+    font-weight: 900;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+/* Settings + profile buttons */
+.header-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #4F7B58;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.icon-btn:hover {
+  color: #3d6246;
+  transform: scale(1.1);
+}
+
+/* Account details section */
+main {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 50px;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-title h1 {
+    font-size: 38px;
+    color: #2f4f38;
+    margin-bottom: 5px;
+}
+
+.page-title p {
+    color: #777777;
+    font-size: 16px;
+}
+
+.profile-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    padding: 40px 50px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 50px;
+    transition: box-shadow 0.3s ease;
+}
+
+/* Profile picture */
+.profile-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-img img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #cfe1d2;
+    margin-bottom: 12px;
+}
+
+.upload-btn {
+    background-color: #4F7B58;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.upload-btn:hover {
+    background-color: #456f4f;
+    transform: scale(1.02);
+}
+
+/* View + edit profile information */
+form {
+    flex: 1;
+    max-width: 400px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: 600;
+    color: #2f4f38;
+    margin-bottom: 6px;
+}
+
+input {
+    height: 25px;
+    border: 2px solid #d1d9cc;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+    border-color: #4F7B58;
+    box-shadow: 0 0 5px rgba(79, 123, 88, 0.4);
+    outline: none;
+}
+
+.optional {
+    color: #999999;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.form-actions {
+    text-align: right;
+    margin-top: 25px;
+}
+
+.save-btn {
+    background-color: #456f4f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 30px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s;
+}
+
+.save-btn:hover {
+    background-color: #3d6246;
+    transform: scale(1.02);
+}
+
+/* Navigation buttons */
+footer.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 60px auto;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+footer button {
+    background-color: #c8acff;
+    border: 1.5px solid #aca7b4;
+    border-radius: 10px;
+    padding: 14px 40px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 220px;
+}
+
+footer button:hover {
+    background-color: #a58ae0;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 650px) {
+    .profile-card {
+        display: flex;
+        flex-direction: column;
+    }
+}
