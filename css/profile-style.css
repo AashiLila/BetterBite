@@ -56,12 +56,16 @@ header {
   border: none;
   cursor: pointer;
   color: #4F7B58;
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .icon-btn:hover {
-  color: #3d6246;
-  transform: scale(1.1);
+  color: #36593f;
+  transform: scale(1.15);
+}
+
+.icon-btn .material-symbols-outlined {
+  font-size: 34px;
 }
 
 /* Account details section */
@@ -174,6 +178,7 @@ input:focus {
 .form-actions {
     text-align: right;
     margin-top: 25px;
+    gap: 10px;
 }
 
 .save-btn {
@@ -184,6 +189,7 @@ input:focus {
     padding: 12px 30px;
     font-size: 15px;
     font-weight: 600;
+    margin: 10px;
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.1s;
 }
@@ -193,37 +199,78 @@ input:focus {
     transform: scale(1.02);
 }
 
-/* Navigation buttons */
-footer.nav-buttons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 60px auto;
-    max-width: 900px;
-    padding: 0 20px;
-}
-
-footer button {
-    background-color: #c8acff;
-    border: 1.5px solid #aca7b4;
-    border-radius: 10px;
-    padding: 14px 40px;
-    font-size: 16px;
+.delete-account-btn {
+    background-color: white;
+    color: rgb(234, 50, 50);
+    border: 3px solid rgb(234, 50, 50);
+    border-radius: 8px;
+    padding: 12px 30px;
+    font-size: 15px;
     font-weight: 600;
-    color: #333333;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    width: 220px;
+    transition: background-color 0.2s ease, transform 0.1s;
 }
 
-footer button:hover {
-    background-color: #a58ae0;
-    transform: translateY(-2px);
+.delete-account-btn:hover {
+    color: rgb(206, 41, 41);
+    border-color: rgb(206, 41, 41);
+    transform: scale(1.02);
 }
 
+/* Navigation buttons */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  margin: 40px auto 70px;
+  padding: 0 20px;
+}
+
+.nav-buttons button {
+  background-color: #C8ACFF;
+  border: 1.2px solid #aca7b4;
+  border-radius: 10px;
+  padding: 14px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333333;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  width: 220px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-buttons button:hover {
+  background-color: #a58ae0;
+  border-color: #9276d0;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive changes */
 @media (max-width: 650px) {
+    header {
+        padding: 16px 24px;
+    }
+
+    .header-buttons {
+        gap: 5px;
+    }
+    
     .profile-card {
         display: flex;
         flex-direction: column;
+    }
+
+    .form-actions {
+        text-align: center;
+    }
+
+    .save-btn {
+        margin-bottom: 25px;
+    }
+
+    .nav-buttons button {
+        width: 200px;
     }
 }
