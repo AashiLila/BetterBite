@@ -63,6 +63,7 @@ main {
 .recipe-button {
     background-color: white;
     border: 2px solid #4F7B58;
+    margin-bottom: 20px;
     border-radius: 10px;
     padding: 16px 20px;
     text-align: left;

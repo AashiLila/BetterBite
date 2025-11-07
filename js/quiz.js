@@ -3,19 +3,19 @@ const quizData = [
   {
     tag: "Diet",
     question: "What is your diet preference?",
-    options: ["Vegan", "Vegetarian", "Gluten Free", "Low Fat"],
+    options: ["Vegan", "Vegetarian", "Gluten Free", "Ketogenic"],
     type: "checkbox"
   },
   {
-    tag: "Diet",
+    tag: "Intolerances",
     question: "Do you have any allergies?",
-    options: ["Peanuts", "Dairy", "Soy", "None"],
+    options: ["Peanut", "Dairy", "Soy", "None"],
     type: "checkbox"
   },
   {
-    tag: "Activity",
-    question: "How often do you exercise?",
-    options: ["Daily", "Weekly", "Monthly", "Rarely"],
+    tag: "Cuisine",
+    question: "What is your preferred cuisine?",
+    options: ["Asian", "American", "Mediterranean", "Mexican"],
     type: "radio"
   }
 ];
