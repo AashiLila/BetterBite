@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BetterBite - Grilled Salmon with Mango Salsa</title>
+    <title>BetterBite — Grilled Salmon with Mango Salsa</title>
 
     <link rel="stylesheet" href="css/recipe-style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,9 +14,9 @@
 <body>
     <!-- Header w/ title and settings + profile buttons -->
     <header>
-        <div class="title">
-            <img src="assets/images/logo.png" alt="BetterBite logo" onclick="window.location.href='nutritionAnalysis.html'"/>
-            <a href="nutritionAnalysis.html" class="app-name">BetterBite</a>
+        <div class="app-name-wrapper" onclick="window.location.href='nutritionAnalysis.html'">
+            <img src="assets/images/logo.png" alt="BetterBite logo" />
+            <div class="app-name">BetterBite</div>
         </div>
 
         <div class="header-buttons">
@@ -36,8 +36,7 @@
             <hr>
             <div class="flex-wrapper">
                 <div class="recipe-img">
-                    <img class="column"
-                        src="https://www.cookingclassy.com/wp-content/uploads/2016/06/lime_salmon_mango_avocado_salsa_coconut_rice6..jpg" />
+                    <img class="column" src="https://www.cookingclassy.com/wp-content/uploads/2016/06/lime_salmon_mango_avocado_salsa_coconut_rice6..jpg" />
                 </div>
                 <div class="ingredients">
                     <h2>Ingredients</h2>
@@ -71,13 +70,13 @@
             <p>If you have leftovers, store the grilled salmon and mango salsa separately to keep everything tasting fresh.
                 The salmon should last about 3 days, and the salsa should last about 4 days.</h3>
         </div>
-    </main>
 
-    <!-- Back & Home navigation buttons -->
-    <div class="nav-buttons">
-        <button id="back-button" onclick="window.location.href='personalised-reccommendation.html'">Back</button>
-        <button id="home-button" onclick="window.location.href='nutritionAnalysis.html'">Home</button>
-    </div>
+        <!-- Back & Home navigation buttons -->
+        <div class="nav-buttons">
+            <button id="back-button" onclick="window.location.href='personalised-reccommendation.html'">Back</button>
+            <button id="home-button" onclick="window.location.href='nutritionAnalysis.html'">Home</button>
+        </div>
+    </main>
 </body>
 
 </html>

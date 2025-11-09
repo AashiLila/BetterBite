@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BetterBite - Profile</title>
+    <title>BetterBite — Profile</title>
 
     <link rel="stylesheet" href="css/profile-style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,9 +14,9 @@
 <body>
     <!-- Header w/ title and settings + profile buttons -->
     <header>
-        <div class="title">
+        <div class="app-name-wrapper" onclick="window.location.href='nutritionAnalysis.html'">
             <img src="assets/images/logo.png" alt="BetterBite logo" />
-            <a href="nutritionAnalysis.html" class="app-name">BetterBite</a>
+            <div class="app-name">BetterBite</div>
         </div>
 
         <div class="header-buttons">
@@ -37,7 +37,7 @@
         </section>
 
         <!-- Edit + view user information form -->
-        <div class="profile-card">
+        <div class="profile-container">
             <div class="profile-left profile-img">
                 <img src="assets/images/default-user.png" alt="Profile picture" />
                 <button class="upload-btn"><i class="fa-solid fa-camera"></i> Change Photo</button>
@@ -60,20 +60,32 @@
                     <label for="email">Email Address</label>
                     <input type="email" id="email" placeholder="Enter your email" />
                 </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your new password" />
+                </div>
 
                 <div class="form-actions">
                     <button type="button" class="save-btn">Save Changes</button>
-                    <button type="button" class="delete-account-btn">Delete Account</button>
+                </div>
+
+                <div class="delete-account">
+                    <h2>Delete account</h2>
+                    <p>Deleting your account will remove all of your information from our database. This action cannot be undone.</p>
+                    
+                    <div class="delete-btn-wrapper">                    
+                        <button type="button" class="delete-account-btn">Delete Account</button>
+                    </div>
                 </div>
             </form>
         </div>
-    </main>
 
-    <!-- Back & Home navigation buttons -->
-    <div class="nav-buttons">
-        <button id="back-button" onclick="window.location.href='personalised-reccommendation.html'">Back</button>
-        <button id="home-button" onclick="window.location.href='nutritionAnalysis.html'">Home</button>
-    </div>
+        <!-- Back & Home navigation buttons -->
+        <div class="nav-buttons">
+            <button id="back-button" onclick="window.location.href='personalised-reccommendation.html'">Back</button>
+            <button id="home-button" onclick="window.location.href='nutritionAnalysis.html'">Home</button>
+        </div>
+    </main>
 </body>
 
 </html>

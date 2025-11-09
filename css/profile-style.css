@@ -1,7 +1,7 @@
 body {
     background-color: #FEFAE0;
     font-family: 'Inter', sans-serif;
-    margin: 0;
+    margin: 0px;
     color: #333333;
 }
 
@@ -11,22 +11,23 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 18px 60px;
-    background-color: #ffffff;
+    background-color: white;
     border-bottom: 1.5px solid #e6e2c7;
     box-shadow: 0 2px 8px rgba(79, 123, 88, 0.05);
     position: sticky;
-    top: 0;
+    top: 0px;
     z-index: 100;
 }
 
 /* App name + logo */
-.title {
+.app-name-wrapper {
     display: flex;
     align-items: center;
     gap: 12px;
+    cursor: pointer;
 }
 
-.title img {
+.app-name-wrapper img {
     width: 42px;
     height: 42px;
     border-radius: 10px;
@@ -36,8 +37,6 @@ header {
     color: #4F7B58;
     font-size: 30px;
     font-weight: 900;
-    text-decoration: none;
-    letter-spacing: 0.5px;
 }
 
 /* Settings + profile buttons */
@@ -46,26 +45,21 @@ header {
     gap: 20px;
 }
 
-.header-buttons {
-  display: flex;
-  gap: 20px;
-}
-
 .icon-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #4F7B58;
-  transition: color 0.2s ease, transform 0.2s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #4F7B58;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .icon-btn:hover {
-  color: #36593f;
-  transform: scale(1.15);
+    color: #36593f;
+    transform: scale(1.15);
 }
 
 .icon-btn .material-symbols-outlined {
-  font-size: 34px;
+    font-size: 34px;
 }
 
 /* Account details section */
@@ -87,15 +81,15 @@ main {
 }
 
 .page-title p {
-    color: #777777;
-    font-size: 16px;
+    color: #666;
 }
 
-.profile-card {
-    background-color: #ffffff;
+.profile-container {
+    background-color: white;
     border-radius: 18px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     padding: 40px 50px;
+    margin-bottom: 60px;
     display: flex;
     justify-content: space-evenly;
     gap: 50px;
@@ -172,7 +166,7 @@ input:focus {
 .optional {
     color: #999999;
     font-style: italic;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .form-actions {
@@ -199,6 +193,20 @@ input:focus {
     transform: scale(1.02);
 }
 
+.delete-account h2 {
+    color: #2f4f38;
+}
+
+.delete-account p {
+    color: rgb(65, 65, 65);
+}
+
+.delete-btn-wrapper {
+    text-align: right;
+    margin-top: 25px;
+    gap: 10px;
+}
+
 .delete-account-btn {
     background-color: white;
     color: rgb(234, 50, 50);
@@ -218,37 +226,36 @@ input:focus {
 
 /* Navigation buttons */
 .nav-buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 900px;
-  margin: 40px auto 70px;
-  padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 900px;
+    margin: 40px auto 70px;
 }
 
 .nav-buttons button {
-  background-color: #C8ACFF;
-  border: 1.2px solid #aca7b4;
-  border-radius: 10px;
-  padding: 14px 40px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #333333;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  width: 220px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #d1baff, #b79af6);
+    border: 1px solid #c5b2fa;
+    border-radius: 12px;
+    padding: 14px 40px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #4e3f84;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    width: 220px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .nav-buttons button:hover {
-  background-color: #a58ae0;
-  border-color: #9276d0;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.15);
+    background-color: #a58ae0;
+    border-color: #9276d0;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.15);
 }
 
 /* Responsive changes */
-@media (max-width: 650px) {
+@media (max-width: 768px) {
     header {
         padding: 16px 24px;
     }
@@ -256,10 +263,11 @@ input:focus {
     .header-buttons {
         gap: 5px;
     }
-    
-    .profile-card {
+
+    .profile-container {
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 
     .form-actions {
@@ -267,10 +275,18 @@ input:focus {
     }
 
     .save-btn {
-        margin-bottom: 25px;
+        margin: 10px 10px 25px 0px;
+    }
+
+    .delete-btn-wrapper {
+        text-align: start;
+    }
+
+    .delete-account {
+        margin-top: 50px;
     }
 
     .nav-buttons button {
-        width: 200px;
+        max-width: 160px;
     }
 }

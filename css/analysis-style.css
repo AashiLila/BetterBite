@@ -1,87 +1,136 @@
-.title-row {
+body {
+  background-color: #FEFAE0;
+  font-family: 'Inter', sans-serif;
+  margin: 0px;
+  color: #333333;
+}
+
+/* Header with title and settings + account buttons */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 60px;
+  background-color: white;
+  border-bottom: 1.5px solid #e6e2c7;
+  box-shadow: 0 2px 8px rgba(79, 123, 88, 0.05);
+  position: sticky;
+  top: 0px;
+  z-index: 100;
+}
+
+/* App name + logo */
+.app-name-wrapper {
   display: flex;
   align-items: center;
-  gap: 3px; 
-  font-size: 25px;
+  gap: 12px;
+  cursor: pointer;
 }
 
-.title-row .material-symbols-outlined {
-  font-size: 50px;
-  padding-top: 20px; 
+.app-name-wrapper img {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
 }
 
-.title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.title img {
-    width: 35px;
-    height: 100%;
-    border-radius: 10px;
-}
-
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.app-name{
-    text-align: left;
-    color: #4F7B58;
-    font-size: 32px;
-    font-weight: 900;
-}
-
-body {
-  font-family: inter;
-  background-color: #FEFAE0;
-  margin: 0;
-  padding: 40px;
+.app-name {
+  color: #4F7B58;
+  font-size: 30px;
+  font-weight: 900;
 }
 
 /* account & settings button */
-.header-buttons button{
-    border: none;
-    background: none;
-    padding: 0 5px;
-    cursor: pointer;
+.header-buttons {
+  display: flex;
+  gap: 20px;
 }
 
-.settings-btn, .account-btn{
-    font-size: 30px;
-    transition: color 0.2s;
-    padding: 5px;
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #4F7B58;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.header-buttons{
-    display: flex;
-    gap: 15px;
+.icon-btn:hover {
+  color: #36593f;
+  transform: scale(1.15);
 }
 
+.icon-btn .material-symbols-outlined {
+  font-size: 34px;
+}
+
+/* Main container */
+main {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 50px;
+}
+
+/* Title + subtitle */
 .container {
-  background-color: #f3f6e8;
-  padding: 30px;
-  border-radius: 10px;
-  width: 650px;
-  margin: auto;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  background-color: #f5f7ed;
+  border: 1.5px solid #e6e2c7;
+  border-radius: 18px;
+  box-shadow: 0 4px 15px rgba(79, 123, 88, 0.1);
+  padding: 40px 50px;
+  margin-bottom: 60px;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 25px 0px 10px;
+}
+
+.title-row .material-symbols-outlined {
+  display: flex;
+  align-items: center;
+  font-size: 40px;
+  color: #4F7B58;
+}
+
+#title-description {
+  justify-self: center;
+}
+
+.section-description {
+  color: #666;
 }
 
 h2 {
-  margin-bottom: 10px;
+  font-size: 38px;
+  font-weight: 700;
+  color: #2f4f38;
+  margin: 0px;
 }
 
+.divider {
+  border: none;
+  border-top: 2px solid #e4e1d1;
+  margin: 25px 0;
+}
+
+/* Nutrients section */
 .section-title {
-  font-weight: bold;
-  margin-bottom: 15px;
+  font-weight: 700;
+  color: #2f4f38;
+  margin: 0px;
+  font-size: 28px;
+}
+
+.section-description {
+  margin: 0px 0px 35px; 
 }
 
 .nutrient-columns {
   display: flex;
   justify-content: space-between;
-  gap: 30px;
+  gap: 40px;
 }
 
 .nutrient-column {
@@ -89,117 +138,162 @@ h2 {
 }
 
 .nutrient {
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
-.label {
-  float: left;
-  font-weight: bold;
-  color: #333;
+.label, .value {
+  font-weight: 600;
+  font-size: 15px;
+  color: #2f4f38;
 }
 
 .value {
   float: right;
-  font-weight: bold;
 }
 
 .bar-container {
   width: 100%;
-  background-color: #f1eeee;
-  border-radius: 5px;
+  background-color: #e1dfd9;
+  border: 1px solid #d1d2cd;
+  border-radius: 6px;
   height: 10px;
   clear: both;
-  margin-top: 5px;
+  margin-top: 6px;
+  overflow: hidden;
 }
 
 .bar {
   height: 10px;
-  border-radius: 5px;
+  border-radius: 6px;
+  transition: width 0.4s ease;
 }
 
 .bar.green {
-  background-color: #4CAF50;
+  background-color: #78c87a;
 }
 
 .bar.red {
-  background-color: #E53935;
+  background-color: #e25350;
 }
 
-.divider {
-  border: none;
-  border-top: 2px solid #ddd;
-  margin: 25px 0;
-}
-
+/* Insights section */
 .insights {
-  background-color: #E2ECC0;
-  padding: 15px;
-  
-  border: 1px solid #ddd;
+  background-color: #e8f1d4;
+  border: 1px solid #dae7b7;
+  border-radius: 12px;
+  padding: 25px 28px;
 }
 
 .insights-row {
   display: flex;
   align-items: center;
-  gap: 3px; 
-  font-size: 25px;
+  gap: 8px;
+  margin-bottom: 15px;
 }
 
 .insights-row .material-symbols-outlined {
-  font-size: 50px;
-  padding-top: 15px; 
+  font-size: 30px;
+  color: #4F7B58;
+}
+
+.insights-row h3 {
+  font-size: 28px;
+  color: #2f4f38;
+  font-weight: 700;
 }
 
 .subtitle {
   font-style: italic;
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 12px;
 }
 
 .improvements {
+  background-color: #FAFAEF;
+  border: 1.5px solid #e6e2c7;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.improvements ul {
   display: flex;
   flex-wrap: wrap;
-  font-weight: bold;
+  gap: 18px 40px;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
 }
 
-.improvements span {
-  background-color: #FAFAEF;
- 
-  padding: 5px 10px;
-  
+.improvements li {
+  font-size: 15px;
+  color: #2f4f38;
+  font-weight: 500;
+  position: relative;
+  padding-left: 16px;
+  display: flex;
+  align-items: center;
 }
 
-.buttons{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
-    margin-bottom: 30px auto;
+.improvements li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #7b9b83; 
+  font-size: 28px;
 }
 
-.buttons button{
-    background-color: #C8ACFF;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 40px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #333;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
-    width: 250px;
+/* Navigation buttons */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  margin: 40px auto 70px;
 }
 
-
-#back{
-    margin-left: 55px;
-    text-align: center;
+.nav-buttons button {
+  background: linear-gradient(135deg, #d1baff, #b79af6);
+  border: 1px solid #c5b2fa;
+  border-radius: 12px;
+  padding: 14px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #4e3f84;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  width: 220px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
-#next{
-    margin-right: 55px;
-    text-align: center;
+.nav-buttons button:hover {
+  background: linear-gradient(135deg, #c6a9ff, #a78af2);
+  border-color: #9276d0;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.15);
 }
 
-button:hover {
-  background-color: #a58ae0;
+/* Responsive changes*/
+@media (max-width: 768px) {
+  header {
+    padding: 16px 24px;
+  }
+
+  .header-buttons {
+    gap: 5px;
+  }
+
+  .container {
+    padding: 35px;
+  }
+
+  .nutrient-columns {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .nav-buttons button {
+    max-width: 160px;
+  }
 }

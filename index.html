@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BetterBite Quiz</title>
+    <title>BetterBite — Quiz</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,26 +11,23 @@
     <link rel="stylesheet" href="css/index-style.css" />
 </head>
 <body>
-  <header>
-    <div class="title">
-      <img src="assets/images/logo.png" alt="BetterBite logo"/>
-      <div class="app-name">BetterBite</div>
-    </div>
+    <!-- Header w/ title and settings + profile buttons -->
+    <header>
+      <div class="app-name-wrapper" onclick="window.location.href='nutritionAnalysis.html'">
+        <img src="assets/images/logo.png" alt="BetterBite logo" />
+        <div class="app-name">BetterBite</div>
+      </div>
 
-    <!--Header buttons - account and settings!-->
-    <div class="header-buttons">
-      <button>
-        <span class="material-symbols-outlined settings-btn">
-          settings
-        </span>
-      </button>
-      <button>
-        <span class="material-symbols-outlined account-btn">
-          account_circle
-        </span>
-      </button>
-    </div>
-  </header>
+      <div class="header-buttons">
+        <button class="icon-btn">
+          <span class="material-symbols-outlined icon">settings</span>
+        </button>
+        <button class="icon-btn" onclick="window.location.href='profile.html'">
+          <span class="material-symbols-outlined icon">account_circle</span>
+        </button>
+      </div>
+    </header>
+
     <!--Quiz Title and Progress Bar-->
     <main>
       <div class="quiz-title">Profile Quiz</div>
