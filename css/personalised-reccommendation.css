@@ -72,7 +72,7 @@ main {
 /* Title + subtitle */
 .page-title {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .page-heading {
@@ -132,8 +132,11 @@ main {
   transform: translateY(-2px);
 }
 
-.recipe-buttom:focus {
-  background-color: yellow;
+.recipe-button.selected-recipe {
+  background-color: #e3ebce;
+  border-width: 3px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  transition: all 0.1s ease-in-out;
 }
 
 .recipe-name {

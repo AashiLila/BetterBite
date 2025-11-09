@@ -33,7 +33,7 @@
             <!-- <span class="material-symbols-outlined cart-icon">shopping_cart</span> -->
             <h1>Personalized Food Recommendations</h1>
           <!-- </div> -->
-          <p class="page-subtitle">Personalized recommendations based on your tracked meals and preferences.</p>
+          <p class="page-subtitle">Personalized recipe selections based on your tracked meals and preferences.</p>
         </div>
 
         <div class="recipe-section-box">
@@ -101,5 +101,28 @@
           <button id="home-button" onclick="window.location.href='recipe.html'">Next</button>
         </div>
     </main>
+
+    <script>
+      // Higlight selected recipe button when clicked
+      const recipeButtons = document.querySelectorAll('.recipe-button');
+
+      recipeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Unselect a selected recipe when it is clicked again
+          if (button.classList.contains('selected-recipe')) {
+            button.classList.remove('selected-recipe');
+          } 
+          else {
+            // Remove selection style from all buttons to clear previously selected recipe      
+            recipeButtons.forEach(btn => 
+              btn.classList.remove('selected-recipe')
+            );
+
+            // Select chosen recipe
+            button.classList.add('selected-recipe');
+          }
+        });
+      });
+    </script>
 </body>
 </html>
