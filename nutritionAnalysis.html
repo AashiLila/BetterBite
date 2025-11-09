@@ -2,33 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Nutrition Analysis</title>
+  <title>BetterBite | Nutrition Analysis</title>
   <link rel="stylesheet" href="css/analysis-style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
 <body>
 
-   <header>
+  <!-- Header -->
+  <header>
     <div class="title">
       <img src="assets/images/logo.png" alt="BetterBite logo"/>
       <div class="app-name">BetterBite</div>
     </div>
 
-    <!--Header buttons - account and settings!-->
     <div class="header-buttons">
-      <button>
-        <span class="material-symbols-outlined settings-btn">
-          settings
-        </span>
-      </button>
-      <button>
-        <span class="material-symbols-outlined account-btn">
-          account_circle
-        </span>
-      </button>
+      <button><span class="material-symbols-outlined">settings</span></button>
+      <button><span class="material-symbols-outlined">account_circle</span></button>
     </div>
   </header>
 
+  <!-- Main Container -->
   <div class="container">
     <div class="title-row">
         <span class="material-symbols-outlined">target</span>
@@ -36,84 +29,78 @@
     </div>
 
     <hr class="divider">
+
+    <!-- Nutrient bars -->
     <div class="insights">
-        <p class="section-title">Nutrients</p>
-        
-        <div class="nutrient-columns">
-            <!-- Left column -->
+      <p class="section-title">Nutrients</p>
+      
+      <div class="nutrient-columns">
+        <!-- Left column -->
         <div class="nutrient-column">
-            <div class="nutrient">
+          <div class="nutrient">
             <span class="label red">Carbs</span>
-            <span class="value">37%</span>
-            <div class="bar-container">
-                <div class="bar red" style="width: 37%;"></div>
-            </div>
-            </div>
+            <span class="value">--%</span>
+            <div class="bar-container"><div class="bar red" style="width: 0%;"></div></div>
+          </div>
 
-            <div class="nutrient">
+          <div class="nutrient">
             <span class="label red">Fiber</span>
-            <span class="value">37%</span>
-            <div class="bar-container">
-                <div class="bar red" style="width: 37%;"></div>
-            </div>
-            </div>
+            <span class="value">--%</span>
+            <div class="bar-container"><div class="bar red" style="width: 0%;"></div></div>
+          </div>
 
-            <div class="nutrient">
+          <div class="nutrient">
             <span class="label red">Protein</span>
-            <span class="value">37%</span>
-            <div class="bar-container">
-                <div class="bar red" style="width: 37%;"></div>
-            </div>
-            </div>
+            <span class="value">--%</span>
+            <div class="bar-container"><div class="bar red" style="width: 0%;"></div></div>
+          </div>
         </div>
 
         <!-- Right column -->
         <div class="nutrient-column">
-            <div class="nutrient">
-            <span class="label red">Vitamin C</span>
-            <span class="value">37%</span>
-            <div class="bar-container">
-                <div class="bar red" style="width: 37%;"></div>
-            </div>
-            </div>
+          <div class="nutrient">
+            <span class="label green">Vitamin C</span>
+            <span class="value">--%</span>
+            <div class="bar-container"><div class="bar green" style="width: 0%;"></div></div>
+          </div>
 
-            <div class="nutrient">
+          <div class="nutrient">
             <span class="label green">Vitamin D</span>
-            <span class="value">85%</span>
-            <div class="bar-container">
-                <div class="bar green" style="width: 85%;"></div>
-            </div>
-            </div>
+            <span class="value">--%</span>
+            <div class="bar-container"><div class="bar green" style="width: 0%;"></div></div>
+          </div>
 
-            <div class="nutrient">
+          <div class="nutrient">
             <span class="label green">Iron</span>
-            <span class="value">100%</span>
-            <div class="bar-container">
-                <div class="bar green" style="width: 100%;"></div>
-            </div>
-            </div>
+            <span class="value">--%</span>
+            <div class="bar-container"><div class="bar green" style="width: 0%;"></div></div>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
+
     <hr class="divider">
 
+    <!-- Insights -->
     <div class="insights">
-        <div class="insights-row">
-            <span class="material-symbols-outlined">search_insights</span>
-            <h3>Nutrition Insights</h3>
-        </div>
+      <div class="insights-row">
+        <span class="material-symbols-outlined">search_insights</span>
+        <h3>Nutrition Insights</h3>
+      </div>
       <p class="subtitle">Areas for Improvement</p>
-      <div class="improvements">
-        <span>• Low Protein</span>
-        <span>• Low Fiber</span>
-        <span>• Low Calcium</span>
-        <span>• Low Vitamin C</span>
+      <div class="improvements" id="improvement-list">
+        <span>Loading...</span>
       </div>
     </div>
   </div>
+
+  <!-- Buttons -->
   <div class="buttons">
-      <button class="back" onclick="window.location.href='foodtracker.html'">Back</button>
-      <button class="next" onclick="window.location.href='personalised-reccommendation.html'">Next</button>
-    </div>
+    <button class="back" onclick="window.location.href='foodtracker.html'">Back</button>
+    <button class="next" onclick="window.location.href='personalised-reccommendation.html'">Next</button>
+  </div>
+
+  <!-- Load JS -->
+  <script src="js/analysis.js"></script>
 </body>
 </html>

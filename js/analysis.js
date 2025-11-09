@@ -1,49 +1,111 @@
-// fetch("https://world.openfoodfacts.net/api/v2/product/3274080005003.json", {
-//   method: "GET",
-//   headers: { Authorization: "Basic " + btoa("off:off") },
-// })
-//   .then((response) => response.json())
-//   .then((json) => console.log(json));
+
+// Spoonacular API key
+const apiKey = "f2d7e0301db8452eb2d4f5b3e701e79c";
+
+// Standard adult daily values (based on 2000-cal diet)
+const DAILY_VALUES = {
+  "Carbohydrates": 275,
+  "Fiber": 28,
+  "Protein": 50,
+  "Vitamin C": 90,
+  "Vitamin D": 20,
+  "Iron": 18,
+};
+
+// Fetch and display nutrition info
+async function getNutrition(query = "pizza") {
+  try {
+    // Step 1: Find the ingredient
+    const searchUrl = `https://api.spoonacular.com/food/ingredients/search?query=${encodeURIComponent(query)}&number=1&apiKey=${apiKey}`;
+    const searchRes = await fetch(searchUrl);
+    const searchData = await searchRes.json();
+
+    console.log("Search status:", searchRes.status);
 
 
-// example.js
-// Run it with: node example.js
+    if (!searchData.results?.length) {
+      alert("Food not found!");
+      return;
+    }
 
-// Built-in fetch is available in Node 18+
-// If you're using an older version, run: npm install node-fetch
+    const foodId = searchData.results[0].id;
 
+    // Step 2: Get detailed nutrition
+    const infoUrl = `https://api.spoonacular.com/food/ingredients/${foodId}/information?amount=100&unit=grams&apiKey=${apiKey}`;
+    const infoRes = await fetch(infoUrl);
+    const food = await infoRes.json();
 
-const query = "Kellogg's Corn Flakes"; // ✅ Example food name
-const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${encodeURIComponent(query)}&search_simple=1&json=1&page_size=1`;
+    const nutrients = food.nutrition?.nutrients || [];
 
-try {
-const response = await fetch(url);
-const data = await response.json();
+    // Link HTML labels to Spoonacular nutrient names
+    const nutrientMap = {
+      "Carbs": "Carbohydrates",
+      "Fiber": "Fiber",
+      "Protein": "Protein",
+      "Vitamin C": "Vitamin C",
+      "Vitamin D": "Vitamin D",
+      "Iron": "Iron",
+    };
 
-if (data.products && data.products.length > 0) {
-    const product = data.products[0];
+    // Reset improvements
+    const improvements = [];
 
-    console.log("Product:", product.product_name || "Unknown");
-    console.log("Brand:", product.brands || "N/A");
-    console.log("Category:", product.categories_tags?.[0] || "N/A");
-    console.log("Serving size:", product.serving_size || "N/A");
-    console.log("Nutri-Score:", product.nutriscore_grade?.toUpperCase() || "N/A");
+    // Go through each nutrient and calculate %DV
+    document.querySelectorAll(".nutrient").forEach(div => {
+      const label = div.querySelector(".label").textContent.trim();
+      const nutrientName = nutrientMap[label];
+      const nutrient = nutrients.find(n =>
+        n.name.toLowerCase().includes(nutrientName.toLowerCase())
+      );
 
-    console.log("Nutri-Levels:");
-    console.log("Vitamin_D:", product.nutriments.vitamin_d_100g || 0);
-    console.log("Vitamin_C:", product.nutriments.vitamin_c_100g || 0);
-    console.log("Fiber:", product.nutriments.fiber_100g || 0);
-    console.log("Protein:", product.nutriments.proteins_100g || 0);
-    console.log("Iron:", product.nutriments.iron_100g || 0);
-    console.log("Carbs:", product.nutriments.carbohydrates_100g || 0);
+      const bar = div.querySelector(".bar");
+      const valueSpan = div.querySelector(".value");
 
+      if (nutrient && DAILY_VALUES[nutrientName]) {
+        // Convert units to mg/g if needed
+        let amount = nutrient.amount;
+        const unit = nutrient.unit.toLowerCase();
 
-} else {
-    console.log("No product found for your search.");
+        if (unit === "µg") amount = amount / 1000; // µg → mg
+        if (unit === "mg" && DAILY_VALUES[nutrientName] > 100) amount = amount / 1000; // mg → g
+
+        const percent = ((amount / DAILY_VALUES[nutrientName]) * 100).toFixed(1);
+        const boundedPercent = Math.min(percent, 100); // prevent overflowing bars
+        valueSpan.textContent = `${percent}%`;
+        bar.style.width = `${boundedPercent}%`;
+
+        // Color logic
+        if (percent < 20) {
+          bar.style.backgroundColor = "#e74c3c"; // red = low
+          improvements.push(`Low ${nutrientName}`);
+        } else if (percent > 120) {
+          bar.style.backgroundColor = "#f39c12"; // orange = too high
+          improvements.push(`High ${nutrientName}`);
+        } else {
+          bar.style.backgroundColor = "#27ae60"; // green = healthy range
+        }
+      } else {
+        valueSpan.textContent = "N/A";
+        bar.style.width = "0%";
+        bar.style.backgroundColor = "#ccc";
+      }
+    });
+
+    // Update insights list
+    const improvementList = document.getElementById("improvement-list");
+    improvementList.innerHTML = improvements.length
+      ? improvements.map(i => `<span>• ${i}</span>`).join("")
+      : "<span>All nutrients are in a good range!</span>";
+
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
 }
-} catch (error) {
-console.error("Error fetching data:", error);
-}
+
+// Run default on page load
+getNutrition("pizza");
+
+
 
 
 
