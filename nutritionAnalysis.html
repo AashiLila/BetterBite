@@ -2,37 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BetterBite | Nutrition Analysis</title>
+  <title>Nutrition Analysis</title>
   <link rel="stylesheet" href="css/analysis-style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="title">
-      <img src="assets/images/logo.png" alt="BetterBite logo"/>
-      <div class="app-name">BetterBite</div>
-    </div>
+  <!-- Header w/ title and settings + profile buttons -->
+    <header>
+        <div class="app-name-wrapper" onclick="window.location.href='nutritionAnalysis.html'">
+            <img src="assets/images/logo.png" alt="BetterBite logo" />
+            <div class="app-name">BetterBite</div>
+        </div>
 
-    <div class="header-buttons">
-      <button><span class="material-symbols-outlined">settings</span></button>
-      <button><span class="material-symbols-outlined">account_circle</span></button>
-    </div>
-  </header>
+           <div class="header-buttons">
+            <button class="icon-btn">
+                <span class="material-symbols-outlined icon">settings</span>
+            </button>
+            <button class="icon-btn" onclick="window.location.href='profile.html'">
+                <span class="material-symbols-outlined icon">account_circle</span>
+            </button>
+        </div>
+    </header>
+    
 
   <!-- Main Container -->
+<main>
   <div class="container">
     <div class="title-row">
-        <span class="material-symbols-outlined">target</span>
+        <span class="material-symbols-outlined">nutrition</span>
         <h2>Nutrition Analysis</h2>
     </div>
-
+    <p class="section-description" id="title-description">See how your meals stack up and where you can nourish better.</p>
     <hr class="divider">
-
-    <!-- Nutrient bars -->
     <div class="insights">
-      <p class="section-title">Nutrients</p>
+     <div class="insights-row">
+                    <span class="material-symbols-outlined">assignment</span>
+                    <p class="section-title">Nutrients</p>
+                </div>
+                <p class="section-description">Overview of your nutrient intake based on your weekly tracked meals.</p>
       
       <div class="nutrient-columns">
         <!-- Left column -->
@@ -46,13 +54,15 @@
           <div class="nutrient">
             <span class="label red">Fiber</span>
             <span class="value">--%</span>
-            <div class="bar-container"><div class="bar red" style="width: 0%;"></div></div>
+            <div class="bar-container"><div class="bar red" style="width: 0%;"></div>
+          </div>
           </div>
 
           <div class="nutrient">
             <span class="label red">Protein</span>
             <span class="value">--%</span>
-            <div class="bar-container"><div class="bar red" style="width: 0%;"></div></div>
+            <div class="bar-container"><div class="bar red" style="width: 0%;"></div>
+          </div>
           </div>
         </div>
 
@@ -78,15 +88,15 @@
         </div>
       </div>
     </div>
-
     <hr class="divider">
 
-    <!-- Insights -->
+    <!-- Nutrition Insights -->
     <div class="insights">
       <div class="insights-row">
         <span class="material-symbols-outlined">search_insights</span>
         <h3>Nutrition Insights</h3>
       </div>
+      <p class="section-description">These are the main takeaways from your nutrition report.</p>
       <p class="subtitle">Areas for Improvement</p>
       <div class="improvements" id="improvement-list">
         <span>Loading...</span>
@@ -95,12 +105,12 @@
   </div>
 
   <!-- Buttons -->
-  <div class="buttons">
+  <div class="nav-buttons">
     <button class="back" onclick="window.location.href='foodtracker.html'">Back</button>
     <button class="next" onclick="window.location.href='personalised-reccommendation.html'">Next</button>
   </div>
-
-  <!-- Load JS -->
-  <script src="js/analysis.js"></script>
+</main>
+<!-- Load JS -->
+<script src="js/analysis.js"></script>
 </body>
 </html>
