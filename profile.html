@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BetterBite — Profile</title>
+
+    <link rel="stylesheet" href="css/profile-style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+</head>
+<body>
+    <!-- Header w/ title and settings + profile buttons -->
+    <header>
+        <div class="app-name-wrapper" onclick="window.location.href='nutritionAnalysis.html'">
+            <img src="assets/images/logo.png" alt="BetterBite logo" />
+            <div class="app-name">BetterBite</div>
+        </div>
+
+        <div class="header-buttons">
+            <button class="icon-btn">
+                <span class="material-symbols-outlined icon">settings</span>
+            </button>
+            <button class="icon-btn" onclick="window.location.href='profile.html'">
+                <span class="material-symbols-outlined icon">account_circle</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Account details section -->
+    <main>
+        <section class="page-title">
+            <h1>Account Details</h1>
+            <p>View and manage your personal information.</p>
+        </section>
+
+        <!-- Edit + view user information form -->
+        <div class="profile-container">
+            <div class="profile-left profile-img">
+                <img src="assets/images/default-user.png" alt="Profile picture" />
+                <button class="upload-btn"><i class="fa-solid fa-camera"></i> Change Photo</button>
+            </div>
+
+            <form>
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" placeholder="Enter your first name" />
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name <span class="optional">(optional)</span></label>
+                    <input type="text" id="last-name" placeholder="Enter your last name" />
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter your username" />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your new password" />
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="save-btn">Save Changes</button>
+                </div>
+
+                <div class="delete-account">
+                    <h2>Delete account</h2>
+                    <p>Deleting your account will remove all of your information from our database. This action cannot be undone.</p>
+                    
+                    <div class="delete-btn-wrapper">                    
+                        <button type="button" class="delete-account-btn">Delete Account</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Back & Home navigation buttons -->
+        <div class="nav-buttons">
+            <button id="back-button" onclick="window.location.href='personalised-reccommendation.html'">Back</button>
+            <button id="home-button" onclick="window.location.href='nutritionAnalysis.html'">Home</button>
+        </div>
+    </main>
+</body>
+
+</html>
