@@ -39,10 +39,34 @@ header {
   font-weight: 900;
 }
 
-/* account & settings button */
+/* Header icons + user profile buttons */
 .header-buttons {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  gap: 5px;
+}
+
+.header-buttons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #4F7B58;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.header-profile-img {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #4F7B58;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #4F7B58;
+  margin: 0px;
 }
 
 .icon-btn {

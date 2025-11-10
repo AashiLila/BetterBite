@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const storedProfile = JSON.parse(localStorage.getItem("userProfile")) || {};
     const profileImage = storedProfile.profileImage || "assets/images/default-user.png";
-    const firstName = storedProfile.firstName || "Jane";
-    const lastName = storedProfile.lastName || "Doe";
+    const firstName = storedProfile.firstName || "Jane Doe";
+    const lastName = storedProfile.lastName || "Smith";
 
     // Update profile picture
     if (headerProfileImg) {
