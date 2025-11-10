@@ -1,8 +1,32 @@
 
 // Spoonacular API key
-const apiKey = "f2d7e0301db8452eb2d4f5b3e701e79c";
+const apiKey = "4632495d6f2d41f48f51c0734216d9c1";
 
-// Standard adult daily values (based on 2000-cal diet)
+const foodEntries = JSON.parse(localStorage.getItem("foodEntries")) || [];
+
+// map to spoonacular values - spoonacular doesn't have brand or anything
+const foodMap = {
+  "classic chips": "potato chips",
+  "dark chocolate": "chocolate bar",
+  "pepsi can": "cola",
+  "corn flakes": "corn cereal",
+  "kitkat": "chocolate wafer",
+};
+
+
+let foodsToAnalyze = foodEntries.length > 0
+  ? foodEntries.map(entry => entry.food)
+  : ["pizza"]; // fallback
+
+foodsToAnalyze = foodsToAnalyze.map(f =>
+  foodMap[f.toLowerCase()] || f
+);
+
+const lastFood = foodsToAnalyze[foodsToAnalyze.length - 1];
+getNutrition(lastFood);
+
+
+// standard adult daily values (based on 2000-cal diet)
 const DAILY_VALUES = {
   "Carbohydrates": 275,
   "Fiber": 28,
@@ -20,7 +44,9 @@ async function getNutrition(query = "pizza") {
     const searchRes = await fetch(searchUrl);
     const searchData = await searchRes.json();
 
+    //console.log("Search status:", searchRes.status);
     console.log("Search status:", searchRes.status);
+    console.log("Search data:", searchData);
 
 
     if (!searchData.results?.length) {
@@ -97,13 +123,14 @@ async function getNutrition(query = "pizza") {
       ? improvements.map(i => `<span>• ${i}</span>`).join("")
       : "<span>All nutrients are in a good range!</span>";
 
+      localStorage.setItem("nutrientImprovements", JSON.stringify(improvements));
   } catch (error) {
     console.error("Error fetching data:", error);
   }
 }
 
 // Run default on page load
-getNutrition("pizza");
+// getNutrition("pizza");
 
 
 

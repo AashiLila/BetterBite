@@ -1,9 +1,10 @@
 
-const API_KEY = "57afcd2e92704dbe95c9b0eefaeb9c80"; // api key for spoonvacular
+const API_KEY = "4632495d6f2d41f48f51c0734216d9c1"; // api key for spoonvacular
 const recipeSection = document.querySelector(".recipe-section-box");
 
-// pull from quiz answers in index.html
+// pull from quiz answers in index.js and nutrient analysis in analysis.js
 const quizAnswers = JSON.parse(localStorage.getItem("quizAnswers")) || [];
+const nutrientImprovements = JSON.parse(localStorage.getItem("nutrientImprovements")) || [];
 
 // store quiz answers in array
 function getAnswer(index){
@@ -40,6 +41,15 @@ if(intolerance.length > 0){
 if(cuisine.length > 0){
     url.searchParams.append("cuisine", cuisine.join(","));
 }
+
+// suggest recipes based on nutrient analysis
+nutrientImprovements.forEach(nutrient => {
+  if (nutrient.includes("Low Protein")) url.searchParams.append("minProtein", "50");
+  if (nutrient.includes("Low Iron")) url.searchParams.append("minIron", "18");
+  if (nutrient.includes("Low Fiber")) url.searchParams.append("minFiber", "28");
+  if (nutrient.includes("Low Vitamin C")) url.searchParams.append("minVitaminC", "90");
+  if (nutrient.includes("Low Vitamin D")) url.searchParams.append("minVitaminD", "20");
+});
 
 // get recipe from API based on updated search parameters
 async function fetchRecipe(){
