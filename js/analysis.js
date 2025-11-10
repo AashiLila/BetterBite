@@ -1,6 +1,6 @@
 
 // Spoonacular API key
-const apiKey = "4632495d6f2d41f48f51c0734216d9c1";
+const apiKey = "4a3522fdbcd94c0fbfe7f14fed740d7e";
 
 const foodEntries = JSON.parse(localStorage.getItem("foodEntries")) || [];
 
