@@ -1,6 +1,8 @@
 console.log("recipe.js loaded");
 
-const API_KEY = "4a3522fdbcd94c0fbfe7f14fed740d7e"; 
+//const API_KEY = "8f5b249a3f0e4e18982a3535c048d603"; 
+const API_KEY = "f2d7e0301db8452eb2d4f5b3e701e79c";
+
 const recipeId = localStorage.getItem("selectedRecipeId");
 console.log("Selected recipe ID:", recipeId);
 

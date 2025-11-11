@@ -1,7 +1,7 @@
 
 // Spoonacular API key
-const apiKey = "4a3522fdbcd94c0fbfe7f14fed740d7e";
-
+//const apiKey = "8f5b249a3f0e4e18982a3535c048d603";
+const apiKey = "f2d7e0301db8452eb2d4f5b3e701e79c";
 const foodEntries = JSON.parse(localStorage.getItem("foodEntries")) || [];
 
 // map to spoonacular values - spoonacular doesn't have brand or anything
@@ -11,6 +11,14 @@ const foodMap = {
   "pepsi can": "cola",
   "corn flakes": "corn cereal",
   "kitkat": "chocolate wafer",
+  "sushi": "sushi",
+  "caesar salad": "caesar salad",
+  "fried chicken": "fried chicken",
+  "pancakes": "pancakes",
+  "tacos": "tacos",
+  "burger": "hamburger",
+  "pizza": "pizza",
+  "pasta": "spaghetti",
 };
 
 
@@ -44,9 +52,9 @@ async function getNutrition(query = "pizza") {
     const searchRes = await fetch(searchUrl);
     const searchData = await searchRes.json();
 
-    //console.log("Search status:", searchRes.status);
     console.log("Search status:", searchRes.status);
     console.log("Search data:", searchData);
+    console.log(searchData.results);
 
 
     if (!searchData.results?.length) {
