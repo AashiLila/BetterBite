@@ -1,6 +1,7 @@
 
 //const API_KEY = "8f5b249a3f0e4e18982a3535c048d603"; // api key for spoonvacular
 const API_KEY = "f2d7e0301db8452eb2d4f5b3e701e79c";
+//const API_KEY = "419a44996f7647838ab7ea820ac345fe";
 const recipeSection = document.querySelector(".recipe-section-box");
 
 // pull from quiz answers in index.js and nutrient analysis in analysis.js

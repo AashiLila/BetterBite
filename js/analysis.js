@@ -2,6 +2,8 @@
 // Spoonacular API key
 //const apiKey = "8f5b249a3f0e4e18982a3535c048d603";
 const apiKey = "f2d7e0301db8452eb2d4f5b3e701e79c";
+//const apiKey = "419a44996f7647838ab7ea820ac345fe";
+
 const foodEntries = JSON.parse(localStorage.getItem("foodEntries")) || [];
 
 // map to spoonacular values - spoonacular doesn't have brand or anything
@@ -22,16 +24,26 @@ const foodMap = {
 };
 
 
+// let foodsToAnalyze = foodEntries.length > 0
+//   ? foodEntries.map(entry => entry.food)
+//   : ["pizza"]; // fallback
+
+// foodsToAnalyze = foodsToAnalyze.map(f =>
+//   foodMap[f.toLowerCase()] || f
+// );
+
+// const lastFood = foodsToAnalyze[foodsToAnalyze.length - 1];
+// getNutrition(lastFood);
+
 let foodsToAnalyze = foodEntries.length > 0
-  ? foodEntries.map(entry => entry.food)
-  : ["pizza"]; // fallback
+  ? foodEntries.map(entry => ({
+      food: foodMap[entry.food.toLowerCase()] || entry.food,
+      servings: entry.servings || 1
+    }))
+  : [{ food: "pizza", servings: 1 }];
 
-foodsToAnalyze = foodsToAnalyze.map(f =>
-  foodMap[f.toLowerCase()] || f
-);
-
-const lastFood = foodsToAnalyze[foodsToAnalyze.length - 1];
-getNutrition(lastFood);
+const lastFoodEntry = foodsToAnalyze[foodsToAnalyze.length - 1];
+getNutrition(lastFoodEntry.food, lastFoodEntry.servings);
 
 
 // standard adult daily values (based on 2000-cal diet)
@@ -45,7 +57,7 @@ const DAILY_VALUES = {
 };
 
 // Fetch and display nutrition info
-async function getNutrition(query = "pizza") {
+async function getNutrition(query = "pizza", servings = 1) {
   try {
     // Step 1: Find the ingredient
     const searchUrl = `https://api.spoonacular.com/food/ingredients/search?query=${encodeURIComponent(query)}&number=1&apiKey=${apiKey}`;
@@ -97,7 +109,7 @@ async function getNutrition(query = "pizza") {
 
       if (nutrient && DAILY_VALUES[nutrientName]) {
         // Convert units to mg/g if needed
-        let amount = nutrient.amount;
+        let amount = nutrient.amount*servings;
         const unit = nutrient.unit.toLowerCase();
 
         if (unit === "µg") amount = amount / 1000; // µg → mg
