@@ -3,19 +3,19 @@ const quizData = [
   {
     tag: "Diet",
     question: "What is your diet preference?",
-    options: ["Vegan", "Vegetarian", "Gluten Free", "Ketogenic"],
+    options: ["Vegan", "Vegetarian", "Gluten Free", "Ketogenic","Pescetarian","Pescetarian","Omnivore","None"],
     type: "checkbox"
   },
   {
     tag: "Intolerances",
     question: "Do you have any allergies?",
-    options: ["Peanut", "Dairy", "Soy", "None"],
+    options: ["Peanut", "Dairy", "Soy", "Tree Nut","Wheat","Seafood","Shellfish","None"],
     type: "checkbox"
   },
   {
     tag: "Cuisine",
     question: "What is your preferred cuisine?",
-    options: ["Asian", "American", "Mediterranean", "Mexican"],
+    options: ["Chinese", "Japanese", "Mediterranean", "Mexican", "Italian", "Indian", "French","American","Spanish", "None"],
     type: "radio"
   }
 ];
@@ -101,12 +101,12 @@ prevBtn.addEventListener("click", () => {
 });
 
 // skips current question and displays next question
-skipBtn.addEventListener("click", () => {
-  if (currentQuestion < quizData.length - 1) {
-    currentQuestion++;
-    loadQuestion();
-  }
-});
+// skipBtn.addEventListener("click", () => {
+//   if (currentQuestion < quizData.length - 1) {
+//     currentQuestion++;
+//     loadQuestion();
+//   }
+// });
 
 // Start quiz
 loadQuestion();

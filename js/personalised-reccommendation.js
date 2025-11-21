@@ -27,7 +27,7 @@ console.log("Cuisine:", cuisine);
 
 const url = new URL("https://api.spoonacular.com/recipes/complexSearch");
 url.searchParams.append("apiKey", API_KEY);
-url.searchParams.append("number", 4); // max 4 recipes on the page
+url.searchParams.append("number", 8); // max 4 recipes on the page
 
 // update search params based on diet
 if(dietPref.length > 0){
