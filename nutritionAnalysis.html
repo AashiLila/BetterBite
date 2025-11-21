@@ -33,13 +33,33 @@
         <h2>Nutrition Analysis</h2>
     </div>
     <p class="section-description" id="title-description">See how your meals stack up and where you can nourish better.</p>
+    
     <hr class="divider">
+
+    <!-- Calories -->
+    <div class="insights">
+      <div class="insights-row">
+        <span class="material-symbols-outlined">award_meal</span>
+        <p class="section-title">Calories</p>
+      </div>
+      <p class="section-description">Your average daily calorie intake based on your daily tracked meals.</p>
+      <div class="nutrient">
+            <span class="label red">Calories</span>
+            <span class="value">--%</span>
+            <div class="bar-container"><div class="bar red" style="width: 0%;"></div></div>
+          </div>
+    </div>
+
+    <hr class="divider">
+
+
+    <!-- Nutrient Overview -->
     <div class="insights">
      <div class="insights-row">
                     <span class="material-symbols-outlined">assignment</span>
                     <p class="section-title">Nutrients</p>
                 </div>
-                <p class="section-description">Overview of your nutrient intake based on your weekly tracked meals.</p>
+                <p class="section-description">Overview of your nutrient intake based on your daily tracked meals.</p>
       
       <div class="nutrient-columns">
         <!-- Left column -->
@@ -111,6 +131,7 @@
 </main>
 <!-- Load JS -->
 <script src="js/analysis.js"></script>
+<script src="js/personalised-reccommendation.js"></script>
 <script src="js/profile.js"></script>
 </body>
 </html>

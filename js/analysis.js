@@ -1,12 +1,11 @@
-
 // Spoonacular API key
-//const apiKey = "8f5b249a3f0e4e18982a3535c048d603";
-const apiKey = "f2d7e0301db8452eb2d4f5b3e701e79c";
-//const apiKey = "419a44996f7647838ab7ea820ac345fe";
+//const API_KEY = "8f5b249a3f0e4e18982a3535c048d603"; 
+//const API_KEY = "f2d7e0301db8452eb2d4f5b3e701e79c";
+const API_KEY = "419a44996f7647838ab7ea820ac345fe";
 
 const foodEntries = JSON.parse(localStorage.getItem("foodEntries")) || [];
 
-// map to spoonacular values - spoonacular doesn't have brand or anything
+// Map to spoonacular values - spoonacular doesn't have brand info
 const foodMap = {
   "classic chips": "potato chips",
   "dark chocolate": "chocolate bar",
@@ -23,31 +22,9 @@ const foodMap = {
   "pasta": "spaghetti",
 };
 
-
-// let foodsToAnalyze = foodEntries.length > 0
-//   ? foodEntries.map(entry => entry.food)
-//   : ["pizza"]; // fallback
-
-// foodsToAnalyze = foodsToAnalyze.map(f =>
-//   foodMap[f.toLowerCase()] || f
-// );
-
-// const lastFood = foodsToAnalyze[foodsToAnalyze.length - 1];
-// getNutrition(lastFood);
-
-let foodsToAnalyze = foodEntries.length > 0
-  ? foodEntries.map(entry => ({
-      food: foodMap[entry.food.toLowerCase()] || entry.food,
-      servings: entry.servings || 1
-    }))
-  : [{ food: "pizza", servings: 1 }];
-
-const lastFoodEntry = foodsToAnalyze[foodsToAnalyze.length - 1];
-getNutrition(lastFoodEntry.food, lastFoodEntry.servings);
-
-
-// standard adult daily values (based on 2000-cal diet)
+// Standard adult daily values (based on 2000-calorie diet)
 const DAILY_VALUES = {
+  "Calories": 2000,
   "Carbohydrates": 275,
   "Fiber": 28,
   "Protein": 50,
@@ -56,104 +33,137 @@ const DAILY_VALUES = {
   "Iron": 18,
 };
 
-// Fetch and display nutrition info
-async function getNutrition(query = "pizza", servings = 1) {
-  try {
-    // Step 1: Find the ingredient
-    const searchUrl = `https://api.spoonacular.com/food/ingredients/search?query=${encodeURIComponent(query)}&number=1&apiKey=${apiKey}`;
-    const searchRes = await fetch(searchUrl);
-    const searchData = await searchRes.json();
+// Nutrient labels mapped to Spoonacular nutrient names
+const nutrientMap = {
+  "Calories": "Calories",
+  "Carbs": "Carbohydrates",
+  "Fiber": "Fiber",
+  "Protein": "Protein",
+  "Vitamin C": "Vitamin C",
+  "Vitamin D": "Vitamin D",
+  "Iron": "Iron",
+};
 
-    console.log("Search status:", searchRes.status);
-    console.log("Search data:", searchData);
-    console.log(searchData.results);
+// Cache to avoid redundant API calls
+//const nutritionCache = {};
 
+// Fetch nutrition info for a single food (100 grams)
+async function fetchNutrition(food) {
+  // if (nutritionCache[food]) return nutritionCache[food];
 
-    if (!searchData.results?.length) {
-      alert("Food not found!");
+  const searchUrl = `https://api.spoonacular.com/food/ingredients/search?query=${encodeURIComponent(food)}&number=1&apiKey=${API_KEY}`;
+  const searchRes = await fetch(searchUrl);
+  const searchData = await searchRes.json();
+
+  if (!searchData.results?.length) {
+    console.warn(`No results found for ${food}`);
+    return null;
+  }
+
+  const foodId = searchData.results[0].id;
+  const infoUrl = `https://api.spoonacular.com/food/ingredients/${foodId}/information?amount=100&unit=grams&apiKey=${API_KEY}`;
+  const infoRes = await fetch(infoUrl);
+  const foodData = await infoRes.json();
+
+  const nutrients = foodData.nutrition?.nutrients || [];
+  //nutritionCache[food] = nutrients;
+  return nutrients;
+}
+
+// Main function: analyze foods for last day entered
+async function analyzeLastDay() {
+  if (foodEntries.length === 0) {
+    alert("No food entries to analyze.");
+    return;
+  }
+
+  const lastDay = foodEntries[foodEntries.length - 1].day;
+  const filteredEntries = foodEntries.filter(entry => entry.day === lastDay);
+
+  if (filteredEntries.length === 0) {
+    alert(`No entries found for day: ${lastDay}`);
+    return;
+  }
+
+  // Total nutrients accumulator
+  const nutrientTotals = {};
+
+  for (const entry of filteredEntries) {
+    const foodName = foodMap[entry.food.toLowerCase()] || entry.food;
+    const servings = entry.servings || 1;
+
+    const nutrients = await fetchNutrition(foodName);
+    if (!nutrients) continue;
+
+    nutrients.forEach(nutrient => {
+      const nutrientName = Object.values(nutrientMap).find(n =>
+        nutrient.name.toLowerCase().includes(n.toLowerCase())
+      );
+      if (!nutrientName) return;
+
+      let amount = nutrient.amount * servings;
+      const unit = nutrient.unit.toLowerCase();
+
+      // Convert units where needed
+      if (unit === "µg") amount /= 1000;
+      if (unit === "mg" && DAILY_VALUES[nutrientName] > 100) amount /= 1000;
+
+      nutrientTotals[nutrientName] = (nutrientTotals[nutrientName] || 0) + amount;
+    });
+  }
+
+  // Update UI nutrient bars
+  document.querySelectorAll(".nutrient").forEach(div => {
+    const label = div.querySelector(".label").textContent.trim();
+    const nutrientName = nutrientMap[label];
+    const amount = nutrientTotals[nutrientName] || 0;
+    const dailyValue = DAILY_VALUES[nutrientName];
+
+    const valueSpan = div.querySelector(".value");
+    const bar = div.querySelector(".bar");
+
+    if (!dailyValue) {
+      valueSpan.textContent = "N/A";
+      bar.style.width = "0%";
+      bar.style.backgroundColor = "#ccc";
       return;
     }
 
-    const foodId = searchData.results[0].id;
+    const percent = ((amount / dailyValue) * 100).toFixed(1);
+    const boundedPercent = Math.min(percent, 100);
 
-    // Step 2: Get detailed nutrition
-    const infoUrl = `https://api.spoonacular.com/food/ingredients/${foodId}/information?amount=100&unit=grams&apiKey=${apiKey}`;
-    const infoRes = await fetch(infoUrl);
-    const food = await infoRes.json();
+    valueSpan.textContent = `${percent}%`;
+    bar.style.width = `${boundedPercent}%`;
 
-    const nutrients = food.nutrition?.nutrients || [];
+    if (percent < 20) {
+      bar.style.backgroundColor = "#e74c3c"; // red
+    } else if (percent > 120) {
+      bar.style.backgroundColor = "#f39c12"; // orange
+    } else {
+      bar.style.backgroundColor = "#27ae60"; // green
+    }
+  });
 
-    // Link HTML labels to Spoonacular nutrient names
-    const nutrientMap = {
-      "Carbs": "Carbohydrates",
-      "Fiber": "Fiber",
-      "Protein": "Protein",
-      "Vitamin C": "Vitamin C",
-      "Vitamin D": "Vitamin D",
-      "Iron": "Iron",
-    };
+  // Generate improvement suggestions
+  const improvements = [];
+  for (const [nutrient, amount] of Object.entries(nutrientTotals)) {
+    const dailyValue = DAILY_VALUES[nutrient];
+    if (!dailyValue) continue;
 
-    // Reset improvements
-    const improvements = [];
-
-    // Go through each nutrient and calculate %DV
-    document.querySelectorAll(".nutrient").forEach(div => {
-      const label = div.querySelector(".label").textContent.trim();
-      const nutrientName = nutrientMap[label];
-      const nutrient = nutrients.find(n =>
-        n.name.toLowerCase().includes(nutrientName.toLowerCase())
-      );
-
-      const bar = div.querySelector(".bar");
-      const valueSpan = div.querySelector(".value");
-
-      if (nutrient && DAILY_VALUES[nutrientName]) {
-        // Convert units to mg/g if needed
-        let amount = nutrient.amount*servings;
-        const unit = nutrient.unit.toLowerCase();
-
-        if (unit === "µg") amount = amount / 1000; // µg → mg
-        if (unit === "mg" && DAILY_VALUES[nutrientName] > 100) amount = amount / 1000; // mg → g
-
-        const percent = ((amount / DAILY_VALUES[nutrientName]) * 100).toFixed(1);
-        const boundedPercent = Math.min(percent, 100); // prevent overflowing bars
-        valueSpan.textContent = `${percent}%`;
-        bar.style.width = `${boundedPercent}%`;
-
-        // Color logic
-        if (percent < 20) {
-          bar.style.backgroundColor = "#e74c3c"; // red = low
-          improvements.push(`Low ${nutrientName}`);
-        } else if (percent > 120) {
-          bar.style.backgroundColor = "#f39c12"; // orange = too high
-          improvements.push(`High ${nutrientName}`);
-        } else {
-          bar.style.backgroundColor = "#27ae60"; // green = healthy range
-        }
-      } else {
-        valueSpan.textContent = "N/A";
-        bar.style.width = "0%";
-        bar.style.backgroundColor = "#ccc";
-      }
-    });
-
-    // Update insights list
-    const improvementList = document.getElementById("improvement-list");
-    improvementList.innerHTML = improvements.length
-      ? improvements.map(i => `<span>• ${i}</span>`).join("")
-      : "<span>All nutrients are in a good range!</span>";
-
-      localStorage.setItem("nutrientImprovements", JSON.stringify(improvements));
-  } catch (error) {
-    console.error("Error fetching data:", error);
+    const percent = (amount / dailyValue) * 100;
+    if (percent < 20) improvements.push(`Low ${nutrient}`);
+    else if (percent > 120) improvements.push(`High ${nutrient}`);
   }
+
+  const improvementList = document.getElementById("improvement-list");
+  improvementList.innerHTML = improvements.length
+    ? improvements.map(i => `<span>• ${i}</span>`).join("")
+    : "<span>All nutrients are in a good range!</span>";
+
+  localStorage.setItem("nutrientImprovements", JSON.stringify(improvements));
+
+  console.log(`Analyzed nutrition for ${lastDay}:`, nutrientTotals);
 }
 
-// Run default on page load
-// getNutrition("pizza");
-
-
-
-
-
-
+// Run the analysis on page load
+analyzeLastDay();
