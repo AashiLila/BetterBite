@@ -131,15 +131,21 @@ main {
   border-radius: 14px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
   padding: 40px 50px;
-  margin-bottom: 60px;
-  max-width: 1000px;
+  margin-bottom: 20px;
+  max-width: 900px;
   display: flex;
   flex-direction: column;
   gap: 18px;
+
+  max-height:480px ;
+  overflow-y: auto;
 }
 
 /* Recipe button card */
 .recipe-button {
+  display : flex;
+  align-items: center;
+  column-gap: 30px;
   background-color: white;
   border: 2px solid #4F7B58;
   margin-bottom: 20px;
@@ -149,6 +155,7 @@ main {
   cursor: pointer;
   transition: all 0.25s ease;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+  max-width: 800px;
 }
 
 .recipe-button:hover {
@@ -164,10 +171,30 @@ main {
 }
 
 .recipe-name {
-  font-size: 19px;
+  font-size: 25px;
   font-weight: 700;
   color: #2f4f38;
   margin-bottom: 10px;
+}
+
+.recipe-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.recipe-image-container {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+.recipe-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .nutrients ul {

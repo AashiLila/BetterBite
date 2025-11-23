@@ -27,7 +27,8 @@ console.log("Cuisine:", cuisine);
 
 const url = new URL("https://api.spoonacular.com/recipes/complexSearch");
 url.searchParams.append("apiKey", API_KEY);
-url.searchParams.append("number", 8); // max 4 recipes on the page
+url.searchParams.append("number", 8); // max 8 recipes on the page
+url.searchParams.append("addRecipeInformation", "true");
 
 // update search params based on diet
 if(dietPref.length > 0){
@@ -79,8 +80,16 @@ function displayRecipes(recipes){
 
     // show recipe name without image
     button.innerHTML = `
-      <div class="recipe-name">${recipe.title}</div>
-    `;
+      <div class="recipe-image-container">
+        <img src="${recipe.image}" alt="${recipe.title}" class="recipe-image"/>
+      </div>
+
+      <div class="recipe-text">
+        <div class="recipe-name">${recipe.title}</div>
+        <div class="ready-in-minutes">Ready in ${recipe.readyInMinutes} minutes</div>
+      </div>
+`;
+
 
     // Save ID when clicked so we can display recipe (not done yet)
     button.addEventListener("click", () => {
