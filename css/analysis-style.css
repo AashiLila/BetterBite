@@ -298,6 +298,48 @@ h2 {
   box-shadow: 0 5px 14px rgba(0, 0, 0, 0.15);
 }
 
+/* need to make this smaller somehow, its annoying me D: */
+.info-button {
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.hover-button {
+  position: relative;
+  display: inline-block;
+}
+
+.popup-text {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #4F7B58;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: normal;
+  width: max-content;      
+  max-width: 300px;            
+  word-wrap: break-word;      
+  font-size: 12px;
+  transition: opacity .2s ease;
+  z-index: 20;
+  pointer-events: none;
+  text-align: left;
+  line-height: 1.3;
+}
+
+.hover-button:hover .popup-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+
 /* Responsive changes*/
 @media (max-width: 768px) {
   header {
