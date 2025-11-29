@@ -14,9 +14,9 @@ const foodMap = {
   "kitkat": "chocolate wafer",
   "sushi": "sushi",
   "caesar salad": "caesar salad",
-  "fried chicken": "fried chicken",
-  "pancakes": "pancakes",
-  "tacos": "tacos",
+  "fried chicken": "fried chicken", // not working
+  "pancakes": "pancakes", // not working
+  "tacos": "tacos", // not working
   "burger": "hamburger",
   "pizza": "pizza",
   "pasta": "spaghetti",
@@ -71,21 +71,24 @@ async function fetchNutrition(food) {
 }
 
 // Main function: analyze foods for last day entered
-async function analyzeLastDay() {
-  if (foodEntries.length === 0) {
-    alert("No food entries to analyze.");
+async function analyzeDay(day) {
+  const filteredEntries = foodEntries.filter(e => e.day === day); // filter by day instead of last day
+
+  if (filteredEntries.length === 0) {
+    alert(`No food entries for ${day}.`);
     return;
   }
 
   const lastDay = foodEntries[foodEntries.length - 1].day;
-  const filteredEntries = foodEntries.filter(entry => entry.day === lastDay);
+  //const filteredEntries = foodEntries.filter(entry => entry.day === lastDay);
 
-  if (filteredEntries.length === 0) {
-    alert(`No entries found for day: ${lastDay}`);
-    return;
-  }
+  // if (filteredEntries.length === 0) {
+  //   alert(`No entries found for day: ${lastDay}`);
+  //   return;
+  // }
 
   // Total nutrients accumulator
+  // this code stayed the same
   const nutrientTotals = {};
 
   for (const entry of filteredEntries) {
@@ -165,5 +168,16 @@ async function analyzeLastDay() {
   console.log(`Analyzed nutrition for ${lastDay}:`, nutrientTotals);
 }
 
+const analysisDaySelect = document.getElementById("analysis-day-select");
+
+// Re-run analysis whenever day is changed
+analysisDaySelect.addEventListener("change", () => {
+  analyzeDay(analysisDaySelect.value);
+});
+
+// Run analysis on page load using default dropdown value
+analyzeDay(analysisDaySelect.value);
+
+
 // Run the analysis on page load
-analyzeLastDay();
+//analyzeLastDay();

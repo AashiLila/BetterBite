@@ -228,6 +228,26 @@ select:focus {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
 }
 
+/* Food Entry List */
+.food-entries-list{
+  margin-top: 10px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.food-entry-item{
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+}
+
+.food-entry-item:last-child{
+  border-bottom: none;
+}
+
+
 /* back and next buttons */
 .nav-buttons {
   display: flex;

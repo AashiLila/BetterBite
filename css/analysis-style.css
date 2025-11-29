@@ -362,4 +362,34 @@ h2 {
   .nav-buttons button {
     max-width: 160px;
   }
+
+/* Day Select Dropdown **need to fix** */
+.day-select {
+  background-color: #f5f7ed;
+  border: 1.5px solid #e6e2c7;
+  padding: 18px 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(79, 123, 88, 0.08);
+  margin-bottom: 35px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 350px;
+}
+
+.day-select label {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2f4f38;
+}
+
+#analysis-day-select {
+  padding: 8px 12px;
+  border: 1.5px solid #c9c7b8;
+  background-color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #2f4f38;
+  cursor: pointer;
+}
 }
