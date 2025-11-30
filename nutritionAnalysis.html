@@ -5,6 +5,8 @@
   <title>Nutrition Analysis</title>
   <link rel="stylesheet" href="css/analysis-style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
 
@@ -181,7 +183,35 @@
       </div>
     </div>
   </div>
+  <!-- Weekly Nutrient Timeline -->
+  <section class="weekly-graph-section">
+    <div class="insights weekly-graph-card">
+      <div class="insights-row">
+        <span class="material-symbols-outlined">timeline</span>
+        <h3>Weekly Nutrient Timeline</h3>
+      </div>
+      <p class="section-description">
+        See how your intake changes across the week. Each point shows one day, Monday through Sunday.
+      </p>
 
+      <div class="weekly-graph-controls">
+        <label for="weekly-metric-select">View weekly timeline for:</label>
+        <select id="weekly-metric-select">
+          <option value="calories">Calories</option>
+          <option value="carbs">Carbs</option>
+          <option value="fiber">Fiber</option>
+          <option value="protein">Protein</option>
+          <option value="vitaminC">Vitamin C</option>
+          <option value="vitaminD">Vitamin D</option>
+          <option value="iron">Iron</option>
+        </select>
+      </div>
+
+      <div class="weekly-graph-canvas-wrapper">
+        <canvas id="weekly-nutrient-chart"></canvas>
+      </div>
+    </div>
+  </section>
   <!-- Buttons -->
   <div class="nav-buttons">
     <button class="back" onclick="window.location.href='foodtracker.html'">Back</button>
