@@ -339,7 +339,43 @@ h2 {
   opacity: 1;
 }
 
+/*timeline graph */
+.weekly-graph-section {
+  margin-bottom: 60px;
+}
 
+.weekly-graph-card {
+  margin-top: 10px;
+}
+
+.weekly-graph-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.weekly-graph-controls label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2f4f38;
+}
+
+#weekly-metric-select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #c9c7b8;
+  font-size: 15px;
+  color: #2f4f38;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.weekly-graph-canvas-wrapper {
+  margin-top: 10px;
+}
 /* Responsive changes*/
 @media (max-width: 768px) {
   header {
