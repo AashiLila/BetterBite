@@ -4,7 +4,8 @@
 const API_KEY = "419a44996f7647838ab7ea820ac345fe";
 
 const foodEntries = JSON.parse(localStorage.getItem("foodEntries")) || [];
-
+const DAYS_OF_WEEK = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+const DAYS_SHORT_LABELS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 // Map to spoonacular values - spoonacular doesn't have brand info
 const foodMap = {
   "classic chips": "potato chips",
@@ -43,7 +44,15 @@ const nutrientMap = {
   "Vitamin D": "Vitamin D",
   "Iron": "Iron",
 };
-
+const metricKeyToLabel = {
+  calories: "Calories",
+  carbs: "Carbs",
+  fiber: "Fiber",
+  protein: "Protein",
+  vitaminC: "Vitamin C",
+  vitaminD: "Vitamin D",
+  iron: "Iron"
+};
 // Cache to avoid redundant API calls
 //const nutritionCache = {};
 
@@ -69,7 +78,54 @@ async function fetchNutrition(food) {
   //nutritionCache[food] = nutrients;
   return nutrients;
 }
+async function getNutrientTotalsForDay(day) {
+  const filteredEntries = foodEntries.filter(e => e.day === day);
 
+  if (filteredEntries.length === 0) {
+    return {}; 
+  }
+
+  const nutrientTotals = {};
+
+  for (const entry of filteredEntries) {
+    const foodName = foodMap[entry.food.toLowerCase()] || entry.food;
+    const servings = entry.servings || 1;
+
+    const nutrients = await fetchNutrition(foodName);
+    if (!nutrients) continue;
+
+    nutrients.forEach(nutrient => {
+      const nutrientName = Object.values(nutrientMap).find(n =>
+        nutrient.name.toLowerCase().includes(n.toLowerCase())
+      );
+      if (!nutrientName) return;
+
+      let amount = nutrient.amount * servings;
+      const unit = nutrient.unit.toLowerCase();
+
+      if (unit === "µg") amount /= 1000;                
+      if (unit === "mg" && DAILY_VALUES[nutrientName] > 100) amount /= 1000; 
+
+      nutrientTotals[nutrientName] = (nutrientTotals[nutrientName] || 0) + amount;
+    });
+  }
+
+  return nutrientTotals;
+}
+async function calculateWeeklySeries(metricKey) {
+  const series = [];
+
+  const label = metricKeyToLabel[metricKey];
+  const nutrientName = nutrientMap[label];
+
+  for (const day of DAYS_OF_WEEK) {
+    const totals = await getNutrientTotalsForDay(day);
+    const value = totals[nutrientName] || 0;
+    series.push(value);
+  }
+
+  return series;
+}
 // Main function: analyze foods for last day entered
 async function analyzeDay(day) {
   const filteredEntries = foodEntries.filter(e => e.day === day); // filter by day instead of last day
@@ -181,3 +237,72 @@ analyzeDay(analysisDaySelect.value);
 
 // Run the analysis on page load
 //analyzeLastDay();
+// ---------------- Weekly Nutrient Timeline (Line Graph) ----------------
+const weeklyMetricSelect = document.getElementById("weekly-metric-select");
+const weeklyChartCanvas = document.getElementById("weekly-nutrient-chart");
+
+let weeklyChart = null;
+
+if (weeklyMetricSelect && weeklyChartCanvas && window.Chart) {
+  const ctx = weeklyChartCanvas.getContext("2d");
+
+  const metricDisplayNames = {
+    calories: "Calories (kcal)",
+    carbs: "Carbs",
+    fiber: "Fiber",
+    protein: "Protein (g)",
+    vitaminC: "Vitamin C",
+    vitaminD: "Vitamin D",
+    iron: "Iron"
+  };
+
+  weeklyChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: DAYS_SHORT_LABELS,
+      datasets: [
+        {
+          label: metricDisplayNames["calories"],
+          data: [0, 0, 0, 0, 0, 0, 0],
+          tension: 0.3,
+          borderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 5
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: "Day of Week"
+          }
+        },
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: "Total Amount"
+          }
+        }
+      }
+    }
+  });
+
+  async function updateWeeklyChart(metricKey) {
+    const series = await calculateWeeklySeries(metricKey);
+
+    weeklyChart.data.datasets[0].data = series;
+    weeklyChart.data.datasets[0].label = metricDisplayNames[metricKey];
+    weeklyChart.update();
+  }
+
+  weeklyMetricSelect.addEventListener("change", (e) => {
+    updateWeeklyChart(e.target.value);
+  });
+
+  updateWeeklyChart(weeklyMetricSelect.value);
+}
