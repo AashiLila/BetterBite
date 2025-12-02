@@ -173,18 +173,26 @@ main {
 }
 
 .label {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: #2f4f38;
   margin-bottom: 6px;
 }
+
+.label2 {
+  font-size: 25px;
+  font-weight: 700;
+  color: #2f4f38;
+  margin-bottom: 6px;
+}
+
 
 select {
   width: 100%;
   padding: 10px 12px;
   border-radius: 8px;
   border: 1.5px solid #bfc9b8;
-  font-size: 16px;
+  font-size: 18px;
   color: #2f2f2f;
   background-color: white;
   transition: border-color 0.2s, box-shadow 0.2s;
@@ -276,6 +284,29 @@ select:focus {
   border-color: #9276d0;
   transform: translateY(-3px);
   box-shadow: 0 5px 14px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Insights section */
+.insights {
+  margin-top: 40px;
+  background-color: #e8f1d4;
+  border: 1px solid #dae7b7;
+  border-radius: 12px;
+  padding: 25px 28px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.insights-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.insights-row .material-symbols-outlined {
+  font-size: 30px;
+  color: #4F7B58;
 }
 
 /* Responsive changes */

@@ -120,9 +120,15 @@
             </div>
         </div>
         <!--Summary of foods added *by day*-->
-        <div class="label">Summary</div>
+    <div class="insights">
+      <div class="insights-row">
+        <div class="label2">Summary</div>
+        <span class="material-symbols-outlined">summarize</span>
+        </div>
         <div class="by-day">
+            <div class="label2">
             <label for="day-select">View Entries For:</label>
+            
             <select id="day-select">
                 <option value="all">All Days</option>
                 <option value="monday">Monday</option>
@@ -134,8 +140,9 @@
                 <option value="sunday">Sunday</option>
             </select>
         </div>
+        </div>
         <div id="food-entries-list" class="food-entries-list"></div>
-
+        </div>
         <!-- Back & Home navigation buttons -->
         <div class="nav-buttons">
             <button id="back-button" onclick="window.location.href='index.html'">Back</button>

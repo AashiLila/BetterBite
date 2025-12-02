@@ -2,19 +2,19 @@
 const quizData = [
   {
     tag: "Diet",
-    question: "What is your diet preference?",
-    options: ["Vegan", "Vegetarian", "Gluten Free", "Ketogenic","Pescetarian","Pescetarian","Omnivore","None"],
+    question: "What is your diet preference? (Select all that apply)",
+    options: ["Vegan", "Vegetarian", "Gluten Free", "Ketogenic","Pescetarian","Omnivore"],
     type: "checkbox"
   },
   {
     tag: "Intolerances",
-    question: "Do you have any allergies?",
-    options: ["Peanut", "Dairy", "Soy", "Tree Nut","Wheat","Seafood","Shellfish","None"],
+    question: "Do you have any allergies? (Select all that apply)",
+    options: ["Peanut", "Dairy", "Soy", "Tree Nut","Wheat","Seafood","Shellfish"],
     type: "checkbox"
   },
   {
     tag: "Cuisine",
-    question: "What is your preferred cuisine?",
+    question: "What is your preferred cuisine? (Select one)",
     options: ["Chinese", "Japanese", "Mediterranean", "Mexican", "Italian", "Indian", "French","American","Spanish", "None"],
     type: "radio"
   }

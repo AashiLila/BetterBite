@@ -133,6 +133,8 @@ h2 {
   margin: 0px;
 }
 
+
+
 .divider {
   border: none;
   border-top: 2px solid #e4e1d1;
@@ -167,7 +169,7 @@ h2 {
 
 .label, .value {
   font-weight: 600;
-  font-size: 15px;
+  font-size: 18px;
   color: #2f4f38;
 }
 
@@ -358,7 +360,7 @@ h2 {
 }
 
 .weekly-graph-controls label {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   color: #2f4f38;
 }
@@ -367,7 +369,7 @@ h2 {
   padding: 8px 12px;
   border-radius: 8px;
   border: 1.5px solid #c9c7b8;
-  font-size: 15px;
+  font-size: 20px;
   color: #2f4f38;
   background-color: #fff;
   cursor: pointer;
@@ -398,25 +400,27 @@ h2 {
   .nav-buttons button {
     max-width: 160px;
   }
-
+}
 /* Day Select Dropdown **need to fix** */
 .day-select {
   background-color: #f5f7ed;
   border: 1.5px solid #e6e2c7;
-  padding: 18px 25px;
-  border-radius: 14px;
+  padding: 20px 30px;
+  border-radius: 10px;
   box-shadow: 0 4px 12px rgba(79, 123, 88, 0.08);
-  margin-bottom: 35px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   gap: 16px;
-  max-width: 350px;
+  max-width: 900px;
+  justify-content: center ;
 }
 
 .day-select label {
-  font-size: 18px;
+  font-size: 25px;
   font-weight: 700;
   color: #2f4f38;
+  align-items: center;
 }
 
 #analysis-day-select {
@@ -424,8 +428,9 @@ h2 {
   border: 1.5px solid #c9c7b8;
   background-color: white;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 25px;
   color: #2f4f38;
   cursor: pointer;
+  appearance: none;
 }
-}
+
