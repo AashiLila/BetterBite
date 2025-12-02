@@ -15,12 +15,14 @@ const foodMap = {
   "kitkat": "chocolate wafer",
   "sushi": "sushi",
   "caesar salad": "caesar salad",
-  "fried chicken": "fried chicken", // not working
-  "pancakes": "pancakes", // not working
-  "tacos": "tacos", // not working
+  "fried chicken": "fried chicken thigh",
+  "pancakes": "pancakes",
+  "tacos": "tacos", 
   "burger": "hamburger",
   "pizza": "pizza",
   "pasta": "spaghetti",
+  "apple": "apple",
+  "Trail Mix": "Trail Mix",
 };
 
 // Standard adult daily values (based on 2000-calorie diet)
@@ -60,7 +62,9 @@ const metricKeyToLabel = {
 async function fetchNutrition(food) {
   // if (nutritionCache[food]) return nutritionCache[food];
 
-  const searchUrl = `https://api.spoonacular.com/food/ingredients/search?query=${encodeURIComponent(food)}&number=1&apiKey=${API_KEY}`;
+  //const searchUrl = `https://api.spoonacular.com/food/ingredients/search?query=${encodeURIComponent(food)}&number=1&apiKey=${API_KEY}`;
+  const searchUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${encodeURIComponent(food)}&number=1&apiKey=${API_KEY}`;
+
   const searchRes = await fetch(searchUrl);
   const searchData = await searchRes.json();
 
@@ -70,7 +74,8 @@ async function fetchNutrition(food) {
   }
 
   const foodId = searchData.results[0].id;
-  const infoUrl = `https://api.spoonacular.com/food/ingredients/${foodId}/information?amount=100&unit=grams&apiKey=${API_KEY}`;
+  //const infoUrl = `https://api.spoonacular.com/food/ingredients/${foodId}/information?amount=100&unit=grams&apiKey=${API_KEY}`;
+  const infoUrl = `https://api.spoonacular.com/recipes/${foodId}/information?includeNutrition=true&apiKey=${API_KEY}`;
   const infoRes = await fetch(infoUrl);
   const foodData = await infoRes.json();
 
