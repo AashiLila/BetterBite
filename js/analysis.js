@@ -1,7 +1,8 @@
 // Spoonacular API key
 //const API_KEY = "8f5b249a3f0e4e18982a3535c048d603"; 
 //const API_KEY = "f2d7e0301db8452eb2d4f5b3e701e79c";
-const API_KEY = "419a44996f7647838ab7ea820ac345fe";
+// const API_KEY = "419a44996f7647838ab7ea820ac345fe";
+const API_KEY = "9a154365992c4df7ba44b8d0078fa7ae";
 
 const foodEntries = JSON.parse(localStorage.getItem("foodEntries")) || [];
 const DAYS_OF_WEEK = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
