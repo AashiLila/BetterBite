@@ -15,8 +15,8 @@ const quizData = [
   {
     tag: "Cuisine",
     question: "What is your preferred cuisine? (Select one)",
-    options: ["Chinese", "Japanese", "Mediterranean", "Mexican", "Italian", "Indian", "French","American","Spanish", "None"],
-    type: "radio"
+    options: ["Chinese", "Japanese", "Mediterranean", "Mexican", "Italian", "Indian", "French","American","Spanish"],
+    type: "checkbox"
   }
 ];
 
